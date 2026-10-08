@@ -1,0 +1,5 @@
+{
+  "tests/test_generation.py::test_b_failover_serves_anthropic": true,
+  "tests/test_generation.py::test_c_ungrounded_topic_refuses_without_llm": true,
+  "tests/test_generation.py::test_d_live_draft_is_cited_and_honest": true
+}

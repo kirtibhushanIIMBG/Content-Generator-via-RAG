@@ -6,16 +6,8 @@
 QDRANT_URL.txt
 .streamlit/secrets.toml
 
-# Source PDFs — build-time inputs, never pushed (CLAUDE.md §4)
-data/raw/
-
-# Python
-__pycache__/
-*.py[cod]
-.venv/
-venv/
+# Source PDFs (data/raw/), the venv, caches and eval/last_run.json are committed on purpose.
 
 # OS
 Thumbs.db
 .DS_Store
-eval/last_run.json
