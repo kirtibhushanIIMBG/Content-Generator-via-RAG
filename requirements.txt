@@ -1,0 +1,61 @@
+# DPDP RAG Content Farm — RUNTIME deps (Python 3.10+)
+#
+# This is what Streamlit Community Cloud installs. Keep it lean: the free tier has
+# ~2.7 GB RAM. Ingestion-only libraries live in requirements-build.txt and must NOT
+# be added here (CLAUDE.md §3: nothing at runtime depends on the build machine).
+#
+# Mostly unpinned per spec, EXCEPT the langgraph stack — see below. After the last build phase,
+# pin everything with:  pip freeze > requirements.lock.txt  and deploy from the lock file.
+
+# Orchestration — the langchain/langgraph stack is PINNED, and this is load-bearing, not tidiness.
+# Phase 6's human-review console imports APIs that only exist in recent langgraph — InMemorySaver,
+# JsonPlusSerializer, types.Command, types.interrupt. Left unpinned, Streamlit Cloud resolved a
+# langgraph whose checkpoint submodules sit elsewhere (and, because requirements.txt was unchanged
+# across the Phase 6 upload, it reused a CACHED build predating those APIs entirely), so app.py
+# crashed at `from src.graph.pipeline import ...` with an ImportError.
+#
+# These are the exact versions the ENTIRE test suite passed against, and they are a coherent set:
+# langgraph 1.2.9 requires langchain-core >=1.4.7,<2, so an unpinned `langchain` pulling a 2.x
+# core would fail to resolve on the cloud. Pin the whole orchestration + LLM-binding layer so the
+# cloud reproduces the tested environment exactly. All pure-Python wheels — safe across
+# Windows->Linux (fastembed/onnxruntime/qdrant are deliberately left unpinned below to avoid a
+# platform-wheel mismatch). Bumping any of these means re-running tests/ first.
+langchain==1.3.13
+langchain-core==1.4.9
+langgraph==1.2.9
+langgraph-checkpoint==4.1.1   # owns InMemorySaver + the serde; named so it can't drift transitively
+langsmith
+langchain-community==0.4.2
+
+# LLMs (OpenAI primary, Claude failover; embeddings are OpenAI-only)
+langchain-anthropic==1.4.8
+langchain-openai==1.3.5
+anthropic
+openai
+
+# Vector store + sparse vectors.
+# fastembed/onnxruntime ARE runtime deps: sparse query vectors are built per request.
+qdrant-client
+fastembed
+
+# Eval
+# ragas — DEFERRED TO PHASE 7 (the RAGAS CI gate). Do not uncomment blindly.
+#
+# ragas 0.4.3 declares an UNBOUNDED langchain-community dependency, but hard-imports
+# `langchain_community.chat_models.vertexai` at module top level (ragas/llms/base.py:12).
+# That module was removed in langchain-community 0.4.x, so `import ragas` raises
+# ModuleNotFoundError against the LangChain 1.x stack this project runs on.
+#
+# Do NOT "fix" it by pinning langchain* back to 0.3.x — LangGraph 1.x interrupt()/Command
+# is what docs/system-design.md §5.9 (human review) is built on, and langchain-community
+# is being sunset upstream anyway.
+#
+# At Phase 7: find a ragas release that works against LangChain 1.x (or one that no longer
+# imports langchain-community), pin it explicitly, and verify with `import ragas` before
+# writing the eval script. It is an EVAL/CI dep, so it belongs in requirements-build.txt.
+# ragas
+
+# App + infra
+streamlit
+python-dotenv
+tenacity

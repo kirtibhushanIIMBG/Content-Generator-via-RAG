@@ -1,0 +1,27 @@
+# Deploy the RAG API on Render, pulling from the GitHub repo (no local git push — Render clones
+# GitHub itself, the same way Streamlit Cloud does, so the Zscaler push block does not apply).
+#
+# Render reads this file when you create a "Blueprint" from the repo. It builds the Docker image
+# from api/Dockerfile with the repo root as context, so both src/ and api/ are in scope.
+services:
+  - type: web
+    name: dpdp-rag-api
+    runtime: docker
+    dockerfilePath: ./api/Dockerfile
+    dockerContext: .
+    plan: free                 # 512 MB RAM. If the build OOMs on fastembed, see DEPLOY-API.md
+    healthCheckPath: /health   # cheap: no LLM, no Qdrant call
+    autoDeploy: true           # redeploy when main changes on GitHub
+    envVars:
+      # sync:false = set the value in the Render dashboard, never commit it (CLAUDE.md §5).
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: QDRANT_URL
+        sync: false
+      - key: QDRANT_API_KEY
+        sync: false
+      - key: API_KEY            # the X-API-Key n8n must send; invent a long random string
+        sync: false
+      # LangSmith tracing is optional at runtime; add LANGSMITH_API_KEY / LANGSMITH_TRACING if wanted.

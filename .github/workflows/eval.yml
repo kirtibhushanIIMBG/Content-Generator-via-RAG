@@ -1,0 +1,116 @@
+# RAG eval CI gate (Phase 7). The gate LOGIC already lives in eval/run_eval.py: it computes the
+# RAGAS four dimensions (faithfulness/relevance/coherence/conciseness) directly, plus this
+# project's golden-rule gates (citation validity, date honesty, gate refusal, ...), and returns
+# exit 1 on ANY breach. CLAUDE.md §5: fail if faithfulness < 0.85 or context_recall < 0.8. This
+# workflow is ONLY the CI wiring around that exit code — the thresholds live in run_eval's GATES.
+#
+# RAGAS the package is deliberately NOT installed: ragas 0.4.x hard-imports
+# langchain_community.chat_models.vertexai, removed from langchain-community 0.4.x, so `import
+# ragas` crashes this LangChain 1.x stack. The four dimensions are computed directly instead — see
+# the requirements.txt ragas note and the run_eval.py docstring. Do not add ragas to make this
+# "real RAGAS"; it would only reintroduce the import crash.
+#
+# GitHub's runners are clean cloud machines — none of the local Zscaler cert dance
+# (SSL_CERT_FILE / REQUESTS_CA_BUNDLE) is needed or wanted here.
+#
+# THREE TIERS, split by cost:
+#   tests      The offline suites (cite_check truth tables, API contract, review console).
+#              No secrets, no network. Every push/PR, ~3 min.
+#   retrieval  FREE of generation LLMs (embeds the query, no drafting/judging). Runs on every
+#              push/PR that touches code, in ~2-3 min. Gates recall@k / mrr / ndcg — the cheap-to
+#              -catch regressions (a broken chunk, a retrieval-code change, a re-index gone wrong).
+#   full       REAL drafts + redrafts + LLM-as-judge (~18 golden + 5 negative cases). Costs money
+#              and ~20-30 min, so it runs WEEKLY + on demand only, never on every push. Gates
+#              faithfulness / correctness / the non-negotiable golden-rule gates. Trigger it
+#              manually (Actions -> eval -> Run workflow) before uploading a generation/prompt change.
+name: eval
+
+on:
+  push:
+    paths: # only when something that can actually move the scores or break a suite changes
+      - "src/**"
+      - "api/**"
+      - "tests/**"
+      - "eval/**"
+      - "data/processed/**"
+      - "requirements.txt"
+      - ".github/workflows/eval.yml"
+  pull_request:
+  workflow_dispatch: # manual full run before shipping a generation change
+  schedule:
+    - cron: "23 4 * * 1" # Mondays 04:23 UTC — weekly full-eval drift check (off the hour)
+
+jobs:
+  tests:
+    name: offline test suites (free, every push)
+    # The suites that are genuinely runnable on a clean runner: no secrets, no network, no
+    # local files. NOT here, with reasons: test_scaffold (reads the gitignored .env),
+    # test_chunks (verifies chunks against the gitignored source PDFs with build-only deps),
+    # test_generation / test_retrieval / test_app (live APIs — retrieval regressions are
+    # already gated by the `retrieval` job below, generation by the weekly `full` job).
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt -r api/requirements.txt
+      - name: cite_check offline (the golden-rule gate's own truth tables)
+        run: python tests/test_cite_check.py --offline
+      - name: API contract (LLM/pipeline stubbed)
+        run: python tests/test_api.py
+      - name: human review console (graph interrupt/resume, no LLM)
+        run: python tests/test_review.py
+
+  retrieval:
+    name: retrieval gate (free, every push)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Retrieval-only eval — gates recall@k / mrr / ndcg (no generation LLM)
+        env:
+          # Embeddings still need OpenAI (text-embedding-3-large) — cheap, but the key is required.
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          QDRANT_URL: ${{ secrets.QDRANT_URL }}
+          QDRANT_API_KEY: ${{ secrets.QDRANT_API_KEY }}
+        run: python -m eval.run_eval --retrieval-only
+
+  full:
+    name: full gate (weekly + manual)
+    # Expensive: real drafts + judge. Not on push/PR — only the weekly cron and manual dispatch.
+    if: github.event_name == 'workflow_dispatch' || github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -r requirements.txt
+      - name: Full eval — gates faithfulness / correctness / golden-rule gates
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} # embeddings + judge (gpt-4o-mini)
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} # generation failover leg
+          QDRANT_URL: ${{ secrets.QDRANT_URL }}
+          QDRANT_API_KEY: ${{ secrets.QDRANT_API_KEY }}
+          # Tracing is optional in CI. If LANGSMITH_API_KEY is set as a secret, the eval's graph
+          # runs show up in LangSmith under this project; if it's empty, tracing simply stays off.
+          LANGSMITH_API_KEY: ${{ secrets.LANGSMITH_API_KEY }}
+          LANGSMITH_TRACING: ${{ vars.LANGSMITH_TRACING }}
+          LANGSMITH_PROJECT: dpdp-eval-ci
+        run: python -m eval.run_eval
+      - name: Upload per-case report
+        if: always() # keep the report even when the gate FAILS — that's exactly when you need it
+        uses: actions/upload-artifact@v4
+        with:
+          name: eval-report
+          path: eval/last_run.json

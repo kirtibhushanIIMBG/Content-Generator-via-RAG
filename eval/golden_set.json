@@ -1,0 +1,201 @@
+{
+  "_readme": [
+    "Golden evaluation set for the DPDP RAG system. Every citation in relevant_citations is a",
+    "REAL chunk citation (verified against data/processed/*_chunks.jsonl) — a typo here silently",
+    "becomes a recall miss and defames a working retriever, so do not hand-edit without checking.",
+    "",
+    "relevant_citations = the provisions that genuinely ANSWER the query. Where the law splits an",
+    "answer across the Act (the duty) and the Rules (the detail), BOTH are listed: a retriever that",
+    "returns only one of them has given the reader half the law.",
+    "",
+    "TWO kinds of negative, because they fail differently:",
+    "",
+    "must_refuse — retrieval itself is off-topic, so the relevance gate must stop it BEFORE any",
+    "LLM call (provider must be 'none'). Deterministic: 'biryani' scores 0.12 against a 0.25 gate.",
+    "",
+    "must_not_assert — retrieval LOOKS grounded (the compensation query's best chunk scores 0.40),",
+    "so the gate lets it through and the MODEL is the last line of defence. Demanding the literal",
+    "string 'no grounded source' here was a TEST BUG: for 'how much compensation can I claim', the",
+    "model legitimately alternates between refusing and writing a correct, fully-cited answer that",
+    "the Act grants no such right (penalties go to the Consolidated Fund, s.34) — and the second is",
+    "the more useful answer. What must NEVER happen is asserting the false premise. So we assert the",
+    "property that matters, not a brittle string: forbidden_claims must not appear, and every",
+    "citation must still be verbatim. A system that INVENTS a compensation amount fails here."
+  ],
+  "test_cases": [
+    {
+      "id": "notice-content",
+      "query": "What must a notice to the Data Principal contain?",
+      "relevant_citations": ["DPDP Rules 2025, r.3", "DPDP Act 2023, s.5"],
+      "expected_answer": "The notice must itemise the personal data collected and the purpose, be understandable on its own in clear plain language, and explain how to withdraw consent, exercise rights, and complain to the Board.",
+      "category": "notice"
+    },
+    {
+      "id": "breach-intimation",
+      "query": "What must a Data Fiduciary do when a personal data breach happens?",
+      "relevant_citations": ["DPDP Rules 2025, r.7", "DPDP Act 2023, s.8"],
+      "expected_answer": "Intimate each affected Data Principal without delay, and the Board without delay, followed within 72 hours by detailed breach particulars, mitigation measures and remedial steps.",
+      "category": "breach"
+    },
+    {
+      "id": "children-consent",
+      "query": "What consent is needed to process a child's personal data?",
+      "relevant_citations": ["DPDP Act 2023, s.9", "DPDP Rules 2025, r.10"],
+      "expected_answer": "Verifiable consent of a parent or lawful guardian is required, with due diligence that the person is an identifiable adult. Tracking, behavioural monitoring and targeted advertising directed at children are prohibited.",
+      "category": "children"
+    },
+    {
+      "id": "penalty-security",
+      "query": "How much can a company be fined for failing to protect personal data?",
+      "relevant_citations": ["DPDP Act 2023, Schedule", "DPDP Act 2023, s.33"],
+      "expected_answer": "Up to two hundred and fifty crore rupees for failing to take reasonable security safeguards. Not enforceable until 13 May 2027.",
+      "category": "penalties"
+    },
+    {
+      "id": "cross-border",
+      "query": "Can personal data be transferred outside India?",
+      "relevant_citations": ["DPDP Rules 2025, r.15", "DPDP Act 2023, s.16"],
+      "expected_answer": "Yes. There is no blanket ban. The Central Government may restrict transfer to notified countries, and transfers are subject to any requirements it specifies regarding foreign states.",
+      "category": "cross-border"
+    },
+    {
+      "id": "sdf-obligations",
+      "query": "What are the obligations of a Significant Data Fiduciary?",
+      "relevant_citations": ["DPDP Act 2023, s.10", "DPDP Rules 2025, r.13"],
+      "expected_answer": "Appoint an India-based Data Protection Officer, appoint an independent data auditor, and conduct a Data Protection Impact Assessment and audit every twelve months.",
+      "category": "sdf"
+    },
+    {
+      "id": "retention-ecommerce",
+      "query": "What is the data retention period for an e-commerce company?",
+      "relevant_citations": ["DPDP Rules 2025, Third Schedule", "DPDP Rules 2025, r.8"],
+      "expected_answer": "Three years from the date the Data Principal last approached the Data Fiduciary, for an e-commerce entity with at least two crore registered users.",
+      "category": "retention"
+    },
+    {
+      "id": "consent-manager-registration",
+      "query": "What are the requirements to register as a Consent Manager?",
+      "relevant_citations": ["DPDP Rules 2025, r.4", "DPDP Rules 2025, First Schedule, Part A"],
+      "expected_answer": "A company incorporated in India with net worth of at least two crore rupees, sound financial condition and management, and independent certification of its interoperable consent platform.",
+      "category": "consent-manager"
+    },
+    {
+      "id": "right-to-erasure",
+      "query": "Can I ask a company to delete my personal data?",
+      "relevant_citations": ["DPDP Act 2023, s.12"],
+      "expected_answer": "Yes. A Data Principal has the right to erasure; the Data Fiduciary must erase unless retention is necessary for the specified purpose or for compliance with law.",
+      "category": "rights"
+    },
+    {
+      "id": "grievance-90-days",
+      "query": "How long does a company have to respond to my complaint?",
+      "relevant_citations": ["DPDP Rules 2025, r.14", "DPDP Act 2023, s.13"],
+      "expected_answer": "The grievance redressal system must respond within a period not exceeding ninety days.",
+      "category": "rights"
+    },
+    {
+      "id": "security-safeguards",
+      "query": "What security measures does the law require?",
+      "relevant_citations": ["DPDP Rules 2025, r.6", "DPDP Act 2023, s.8"],
+      "expected_answer": "Reasonable security safeguards including encryption, obfuscation, masking or tokenisation, access control, logging and monitoring, backups, and one-year log retention.",
+      "category": "security"
+    },
+    {
+      "id": "board-composition",
+      "query": "Who sits on the Data Protection Board and how are they appointed?",
+      "relevant_citations": ["DPDP Act 2023, s.19", "DPDP Act 2023, s.20"],
+      "expected_answer": "The Board consists of a Chairperson and other Members appointed by the Central Government, with qualifications and terms as prescribed.",
+      "category": "board"
+    },
+    {
+      "id": "appeal",
+      "query": "How do I appeal an order of the Data Protection Board?",
+      "relevant_citations": ["DPDP Act 2023, s.29"],
+      "expected_answer": "An appeal lies to the Appellate Tribunal within sixty days of receipt of the Board's order.",
+      "category": "appeal"
+    },
+    {
+      "id": "duties-data-principal",
+      "query": "What are the duties of a Data Principal?",
+      "relevant_citations": ["DPDP Act 2023, s.15"],
+      "expected_answer": "Not to impersonate, not to suppress material information, not to register a false or frivolous grievance, and to furnish only authentic information.",
+      "category": "rights"
+    },
+    {
+      "id": "consent-requirements",
+      "query": "What makes consent valid under the DPDP Act?",
+      "relevant_citations": ["DPDP Act 2023, s.6(1-8)"],
+      "expected_answer": "Consent must be free, specific, informed, unconditional and unambiguous with a clear affirmative action, limited to data necessary for the specified purpose, and withdrawable as easily as it was given.",
+      "category": "consent"
+    },
+    {
+      "id": "exemptions",
+      "query": "Which processing is exempt from most DPDP obligations?",
+      "relevant_citations": ["DPDP Act 2023, s.17"],
+      "expected_answer": "Processing necessary for enforcing a legal right or claim, judicial functions, prevention or investigation of offences, and certain other listed purposes.",
+      "category": "exemptions"
+    },
+    {
+      "id": "legitimate-uses",
+      "query": "When can a company process my data without asking for consent?",
+      "relevant_citations": ["DPDP Act 2023, s.7"],
+      "expected_answer": "For certain legitimate uses, including where the Data Principal voluntarily provided the data for a specified purpose, for State subsidies and services, medical emergencies, and employment purposes.",
+      "category": "consent"
+    },
+    {
+      "id": "penalty-breach-notification",
+      "query": "What is the penalty for not reporting a data breach?",
+      "relevant_citations": ["DPDP Act 2023, Schedule"],
+      "expected_answer": "Up to two hundred crore rupees for failure to notify the Board or affected Data Principals of a breach. Not enforceable until 13 May 2027.",
+      "category": "penalties"
+    }
+  ],
+  "must_refuse": [
+    {
+      "id": "neg-biryani",
+      "query": "best biryani recipe in Hyderabad",
+      "why": "wholly off-topic (best relevance 0.12 vs the 0.25 gate) — the gate must kill it with no LLM call"
+    },
+    {
+      "id": "neg-car",
+      "query": "how do I fix my car engine",
+      "why": "off-topic; retrieval still returns 6 chunks, so only the relevance gate stands between this and a confident answer"
+    }
+  ],
+  "must_not_assert": [
+    {
+      "id": "neg-compensation-amount",
+      "query": "How much compensation can I claim from a company that leaked my data?",
+      "why": "The Act grants NO compensation right — penalties are credited to the Consolidated Fund (s.34). Retrieval scores 0.40 so the gate passes it; the model must either refuse or say plainly that no such right exists. Inventing an amount is the failure.",
+      "forbidden_claims": [
+        "you can claim compensation",
+        "entitled to compensation",
+        "compensation of up to",
+        "may claim damages",
+        "right to compensation under the act"
+      ]
+    },
+    {
+      "id": "neg-gdpr",
+      "query": "How is the DPDP Act different from GDPR for consent requirements?",
+      "why": "Half the question has no source in the corpus. It may describe DPDP consent, but it must not state what GDPR requires.",
+      "forbidden_claims": [
+        "gdpr requires",
+        "under gdpr,",
+        "gdpr mandates",
+        "unlike gdpr, which"
+      ]
+    },
+    {
+      "id": "neg-esign",
+      "query": "How does the DPDP Act require companies to handle e-signature workflows?",
+      "why": "False premise — the corpus never mentions e-signatures. Bridging statute into an invented eSign mandate would publish a fabricated legal claim under Certinal's name.",
+      "forbidden_claims": [
+        "the act requires e-signature",
+        "dpdp requires electronic signature",
+        "e-signature platforms must",
+        "esignature workflows must comply with section"
+      ]
+    }
+  ]
+}

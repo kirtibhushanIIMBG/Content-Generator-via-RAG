@@ -1,0 +1,66 @@
+# Free-tier keep-alive (docs/system-design.md §8). Two idle timers can kill this system
+# silently: Qdrant Cloud suspends a cluster after ~1 week idle (taking the index with it)
+# and Streamlit Community Cloud sleeps an app after ~12h of no traffic. A twice-daily ping
+# to each resets both clocks.
+#
+# ponytail: GitHub Actions instead of the n8n keep-alive the design doc names — zero new
+# infra, the repo is already here. Move it to n8n at Phase 8 when n8n exists anyway.
+# Caveat: GitHub disables scheduled workflows after 60 days with no repo activity, and
+# cron runs can be delayed under load. Both are fine for idle timers measured in hours/days.
+name: keepalive
+
+on:
+  schedule:
+    # THREE times daily (8h apart), off the hour (shared-runner crons bunch on :00).
+    # Was twice daily (12h apart) — exactly Streamlit's ~12h sleep timer, so one delayed cron
+    # run (GitHub delays them under load) opened a >12h gap and the app slept anyway.
+    - cron: "17 3,11,19 * * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Qdrant Cloud (resets the 1-week idle-suspend clock)
+        run: |
+          curl -sS --fail-with-body --max-time 30 \
+            -H "api-key: ${{ secrets.QDRANT_API_KEY }}" \
+            "${{ secrets.QDRANT_URL }}/collections/dpdp" \
+            | tee /dev/stderr | grep -q '"status":"green"'
+
+      # Content check, not just status: a SLEPT Streamlit app serves its "get this app back
+      # up" placeholder with HTTP 200, so a bare curl reported success precisely when the
+      # keepalive had failed. If the sleeping page is detected, this step FAILS — loudly, so
+      # someone clicks the app awake — instead of green-stamping a dead app forever.
+      #
+      # -c/-b (cookie jar) is load-bearing: the app 303s to share.streamlit.io/-/auth/app,
+      # which sets a cookie and bounces back. Cookie-less, that bounce is an infinite
+      # redirect loop — curl exit 47 after 50 hops, which is what broke run #7.
+      - name: Ping the Streamlit app (resets the ~12h sleep clock; fails if it already slept)
+        if: vars.STREAMLIT_APP_URL != ''
+        run: |
+          page=$(curl -sSL --fail-with-body --max-time 60 \
+            -c "$RUNNER_TEMP/cookies" -b "$RUNNER_TEMP/cookies" \
+            "${{ vars.STREAMLIT_APP_URL }}")
+          if echo "$page" | grep -qi "gone to sleep\|get this app back up"; then
+            echo "::error::Streamlit app is ASLEEP — open ${{ vars.STREAMLIT_APP_URL }} and wake it"
+            exit 1
+          fi
+
+      - name: Warn if keepalive targets are unconfigured (a skipped ping is a silent death)
+        if: vars.STREAMLIT_APP_URL == '' || vars.RAG_API_URL == ''
+        run: |
+          [ -z "${{ vars.STREAMLIT_APP_URL }}" ] && echo "::warning::STREAMLIT_APP_URL repo variable is unset — the Streamlit keepalive is NOT running"
+          [ -z "${{ vars.RAG_API_URL }}" ] && echo "::warning::RAG_API_URL repo variable is unset — the RAG API keepalive is NOT running"
+          true
+
+      # Render free web services spin down after ~15 min idle, so this twice-daily ping does NOT
+      # keep the RAG API continuously warm — the n8n /generate call can still hit a ~50s cold start.
+      # It only wakes it now (Render doesn't permanently suspend on inactivity, unlike Qdrant). For
+      # a truly-warm API, run a separate <15-min cron; twice daily is enough to prove liveness.
+      - name: Ping the RAG API /health (wakes it; does not keep it warm)
+        if: vars.RAG_API_URL != ''
+        run: |
+          curl -sS --fail-with-body --max-time 90 \
+            "${{ vars.RAG_API_URL }}/health" \
+            | tee /dev/stderr | grep -q '"status":"ok"'

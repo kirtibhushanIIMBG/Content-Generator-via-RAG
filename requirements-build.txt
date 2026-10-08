@@ -1,0 +1,28 @@
+# DPDP RAG Content Farm — BUILD-TIME deps (ingestion + indexing, local only)
+#
+#   pip install -r requirements.txt -r requirements-build.txt
+#
+# The deployed app NEVER installs this file. Streamlit Cloud reads requirements.txt only,
+# and its free tier has ~2.7 GB RAM — so anything used solely to turn the source PDFs into
+# Qdrant vectors belongs here, not there (CLAUDE.md §3, cloud-first architecture).
+
+-r requirements.txt
+
+# --- PDF extraction. BOTH are load-bearing; see the docstring in src/ingest/chunk.py.
+#
+# pdfminer.six — body text. It resolves the Act's nested coordinate space and its 8pt
+#   margin side-notes, which flat extraction injects into the middle of legal sentences
+#   ("...only in accordance PROCESSING with the provisions..."). Also the only one that
+#   reads page 1, whose body sits inside a Form XObject.
+# pypdf — Schedules, via extraction_mode="layout". It is the only one that keeps the
+#   penalty table's rows aligned; read any other way the table comes out in column order
+#   and every penalty comes unstuck from its breach.
+#
+# Neither alone gets both right. Do not consolidate.
+pdfminer.six
+pypdf
+
+# NOTE: `unstructured` was dropped at Phase 2. It was never imported — the chunker uses
+# pdfminer + pypdf directly — and it drags in spacy, nltk, numba and llvmlite, which would
+# have blown the Streamlit free-tier RAM budget at deploy. Do not re-add it without a
+# concrete use.

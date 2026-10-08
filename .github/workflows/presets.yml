@@ -1,0 +1,49 @@
+# Guard: generate.py's runtime STYLES presets must stay in sync with the docs they are generated
+# from. The guideline text lives in the <!-- PRESET --> blocks of the four source docs (blog in
+# docs/style-blog.md; newsletter, linkedin_article and linkedin_article_short in their root
+# *_Instructions.md guides);
+# tools/sync_presets.py regenerates generate.py's _SYNCED_PRESETS from them. This check fails if a
+# doc (or generate.py) is edited without running `python tools/sync_presets.py`, so the runtime can
+# never silently drift from the documented guideline. Keep the `paths:` lists below equal to
+# tools/sync_presets.py's DOCS mapping — a new preset doc that is not listed here escapes the guard.
+#
+# Deliberately its OWN workflow (not a step in eval.yml): eval.yml's push trigger does not watch
+# docs/**, so a guideline-only edit would fire no check there. This one is pure stdlib — no pip
+# install, no secrets, ~10 seconds — so it is cheap to run on every relevant change.
+name: presets-in-sync
+
+on:
+  push:
+    paths:
+      - "docs/style-blog.md"
+      - "Newsletter_Instructions.md"
+      - "LinkedIn_Article_Long_Instructions.md"
+      - "LinkedIn_Article_Short_Instructions.md"
+      - "src/generation/generate.py"
+      - "tools/sync_presets.py"
+      - ".github/workflows/presets.yml"
+  pull_request:
+    paths:
+      - "docs/style-blog.md"
+      - "Newsletter_Instructions.md"
+      - "LinkedIn_Article_Long_Instructions.md"
+      - "LinkedIn_Article_Short_Instructions.md"
+      - "src/generation/generate.py"
+      - "tools/sync_presets.py"
+      - ".github/workflows/presets.yml"
+
+jobs:
+  check:
+    name: STYLES presets match the docs
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      # No `pip install` — sync_presets.py uses only the standard library and reads generate.py as
+      # text (it does not import the project). Fails (exit 1) if generate.py drifted from the docs;
+      # the log tells the committer to run `python tools/sync_presets.py`.
+      - name: STYLES presets in sync with the style docs
+        run: python tools/sync_presets.py --check

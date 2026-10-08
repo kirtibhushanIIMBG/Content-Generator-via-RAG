@@ -1,0 +1,12 @@
+# RAG API service — RUNTIME deps for the HTTP endpoint n8n calls (Phase 8).
+#
+# The API runs the SAME grounded pipeline as the Streamlit app, so it needs the whole runtime
+# stack, plus the web-server layer. Reuse the app's pinned runtime deps rather than restate them
+# (the langgraph/langchain pins there are load-bearing — see that file), then add FastAPI.
+-r ../requirements.txt
+
+# Web server. Pinned to what the endpoint was built and tested against.
+fastapi==0.139.0
+uvicorn[standard]==0.51.0
+# httpx (reference-link fetch) is already pulled in by the openai/anthropic SDKs in the base
+# requirements; not restated here so its version stays whatever that stack resolves.
