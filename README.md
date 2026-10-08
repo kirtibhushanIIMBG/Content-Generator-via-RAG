@@ -76,7 +76,7 @@ copy .streamlit\secrets.toml.example .streamlit\secrets.toml
 ## Layout
 
 ```
-data/raw/          Source PDFs (gitignored, build-time only, never pushed)
+data/raw/          Source PDFs (committed; build-time inputs, not needed at runtime)
 data/processed/    Chunked JSONL output — human-openable, audit before indexing
 src/ingest/        PDF parsing + legal-aware chunking
 src/retrieval/     Qdrant hybrid search (dense + sparse, RRF fusion)
@@ -129,7 +129,7 @@ then formats and polish. A polished UI on top of wrong citations is a liability,
 
 ## Deploying (Phase 4)
 
-1. **Streamlit Community Cloud** → New app → this repo, branch `master`, main file `app.py`,
+1. **Streamlit Community Cloud** → New app → this repo, branch `main`, main file `app.py`,
    Python **3.12** (Advanced settings).
 2. **App → Settings → Secrets**: paste the seven variables from `.streamlit/secrets.toml.example`
    with real values (the same ones in your local `.env`). The app copies them into the

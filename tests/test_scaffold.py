@@ -112,12 +112,13 @@ def test_build_deps_never_leak_into_the_runtime_requirements() -> None:
         assert needed in build.read_text(encoding="utf-8"), f"{needed} missing from build deps"
 
 
-def test_gitignore_covers_secrets_and_raw() -> None:
+def test_gitignore_covers_secrets() -> None:
     lines = {
         ln.strip().rstrip("/")
         for ln in (ROOT / ".gitignore").read_text(encoding="utf-8").splitlines()
     }
-    for pattern in (".env", "data/raw", ".streamlit/secrets.toml", "venv", ".venv"):
+    # data/raw/ and venv/ are committed on purpose; only the secrets must stay out.
+    for pattern in (".env", ".streamlit/secrets.toml"):
         assert pattern in lines, f".gitignore missing: {pattern}"
 
 

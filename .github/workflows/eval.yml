@@ -45,7 +45,7 @@ jobs:
     name: offline test suites (free, every push)
     # The suites that are genuinely runnable on a clean runner: no secrets, no network, no
     # local files. NOT here, with reasons: test_scaffold (reads the gitignored .env),
-    # test_chunks (verifies chunks against the gitignored source PDFs with build-only deps),
+    # test_chunks (verifies chunks against the data/raw/ source PDFs; needs build-only deps),
     # test_generation / test_retrieval / test_app (live APIs — retrieval regressions are
     # already gated by the `retrieval` job below, generation by the weekly `full` job).
     runs-on: ubuntu-latest

@@ -70,7 +70,7 @@ assigning metadata; do not assign effective dates from memory.
 The Act **cannot** date itself: s.1(2) says only *"such date as the Central Government may, by
 notification in the Official Gazette, appoint."* So `authority_status` for the 44 sections comes
 from a **third** document, obtained 2026-07-13 and stored at `data/raw/DPDP_Act_Commencement_SO.pdf`
-(gitignored, build-time only):
+(build-time only):
 
 > **G.S.R. 843(E)** — Ministry of Electronics and Information Technology, **New Delhi, 13th
 > November 2025**. `[F. No. AA-11038/1/2025-CL&ES]`, AJIT KUMAR, Jt. Secy. `CG-DL-E-14112025-267647`.

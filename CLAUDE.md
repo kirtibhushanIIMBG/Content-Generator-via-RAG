@@ -88,7 +88,7 @@ The human provides the authoritative PDFs directly in the project folder:
 
 Use these EXACT filenames and paths — do not download, rename, or substitute other
 copies. If the files are elsewhere in the project root, move them into data/raw/ first.
-data/raw/ is gitignored; the PDFs never go to GitHub. Before chunking, confirm both
+data/raw/ is committed to GitHub. Before chunking, confirm both
 PDFs are text-selectable (not scans); if either is a scan, stop and tell the human
 OCR is needed.
 

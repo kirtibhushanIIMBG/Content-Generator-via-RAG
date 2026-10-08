@@ -36,7 +36,7 @@ handling, authority-status metadata, and mandatory human review.
 
 ## 3. Source documents (authoritative corpus)
 
-User-supplied local PDFs, exact filenames, placed in `data/raw/` (gitignored):
+User-supplied local PDFs, exact filenames, placed in `data/raw/` (committed to the repo):
 
 | File | Content | Status |
 |---|---|---|
