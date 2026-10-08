@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 640" width="960" height="640" role="img" aria-labelledby="t d">
+<title id="t">Evaluation results</title>
+<desc id="d">Animated bar chart of the last full evaluation run, 22 July 2026, 18 questions, scored 0 to 100 with a pass mark per metric. Retrieval: Recall@6 100 (pass 80), MRR 88.0 (pass 70), NDCG@6 88.1 (pass 75). Generation, judged by GPT-4o mini: Faithfulness 99.4 (pass 85), Correctness 98.9 (pass 85), Relevance 100 (pass 85), Coherence 91.7 (pass 80), Conciseness 85.0 (pass 75). Golden-rule gates, each at 100 percent: answered, citation validity, date honesty, off-topic refused, no false assertion, no contradiction.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+.t1 { font-size: 22px; font-weight: 600; fill: #f0f6fc; }
+.t2 { font-size: 15px; fill: #8b949e; }
+.bt { font-size: 17px; font-weight: 600; fill: #f0f6fc; }
+.bl { font-size: 13px; fill: #8b949e; }
+.num { font-size: 13px; font-weight: 700; fill: #f0f6fc; }
+.cap { font-size: 15.5px; fill: #c9d1d9; }
+.tb { transform-box: fill-box; }
+@keyframes flow { to { stroke-dashoffset: -20; } }
+.lab { font-size: 15px; fill: #c9d1d9; }
+.val { font-size: 14px; font-weight: 600; fill: #f0f6fc; }
+.grp { font-size: 13.5px; font-weight: 600; fill: #8b949e; }
+.ax { font-size: 12px; fill: #8b949e; font-variant-numeric: tabular-nums; }
+@keyframes k1 {0.000% {opacity:1} 90.000% {opacity:1} 94.286% {opacity:0} 98.929% {opacity:0} 100.000% {opacity:1}}
+.k1 {animation: k1 14s linear infinite both;}
+@keyframes k2 {0.000% {transform:scaleX(0)} 3.571% {transform:scaleX(0)} 11.429% {transform:scaleX(1)} 94.286% {transform:scaleX(1)} 94.643% {transform:scaleX(0)} 100.000% {transform:scaleX(0)}}
+.k2 {animation: k2 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k3 {0.000% {opacity:0} 10.000% {opacity:0} 12.143% {opacity:1} 100.000% {opacity:1}}
+.k3 {animation: k3 14s linear infinite both;}
+@keyframes k4 {0.000% {transform:scaleX(0)} 4.429% {transform:scaleX(0)} 12.286% {transform:scaleX(1)} 94.286% {transform:scaleX(1)} 94.643% {transform:scaleX(0)} 100.000% {transform:scaleX(0)}}
+.k4 {animation: k4 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k5 {0.000% {opacity:0} 10.857% {opacity:0} 13.000% {opacity:1} 100.000% {opacity:1}}
+.k5 {animation: k5 14s linear infinite both;}
+@keyframes k6 {0.000% {transform:scaleX(0)} 5.286% {transform:scaleX(0)} 13.143% {transform:scaleX(1)} 94.286% {transform:scaleX(1)} 94.643% {transform:scaleX(0)} 100.000% {transform:scaleX(0)}}
+.k6 {animation: k6 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k7 {0.000% {opacity:0} 11.714% {opacity:0} 13.857% {opacity:1} 100.000% {opacity:1}}
+.k7 {animation: k7 14s linear infinite both;}
+@keyframes k8 {0.000% {transform:scaleX(0)} 6.143% {transform:scaleX(0)} 14.000% {transform:scaleX(1)} 94.286% {transform:scaleX(1)} 94.643% {transform:scaleX(0)} 100.000% {transform:scaleX(0)}}
+.k8 {animation: k8 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k9 {0.000% {opacity:0} 12.571% {opacity:0} 14.714% {opacity:1} 100.000% {opacity:1}}
+.k9 {animation: k9 14s linear infinite both;}
+@keyframes k10 {0.000% {transform:scaleX(0)} 7.000% {transform:scaleX(0)} 14.857% {transform:scaleX(1)} 94.286% {transform:scaleX(1)} 94.643% {transform:scaleX(0)} 100.000% {transform:scaleX(0)}}
+.k10 {animation: k10 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k11 {0.000% {opacity:0} 13.429% {opacity:0} 15.571% {opacity:1} 100.000% {opacity:1}}
+.k11 {animation: k11 14s linear infinite both;}
+@keyframes k12 {0.000% {transform:scaleX(0)} 7.857% {transform:scaleX(0)} 15.714% {transform:scaleX(1)} 94.286% {transform:scaleX(1)} 94.643% {transform:scaleX(0)} 100.000% {transform:scaleX(0)}}
+.k12 {animation: k12 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k13 {0.000% {opacity:0} 14.286% {opacity:0} 16.429% {opacity:1} 100.000% {opacity:1}}
+.k13 {animation: k13 14s linear infinite both;}
+@keyframes k14 {0.000% {transform:scaleX(0)} 8.714% {transform:scaleX(0)} 16.571% {transform:scaleX(1)} 94.286% {transform:scaleX(1)} 94.643% {transform:scaleX(0)} 100.000% {transform:scaleX(0)}}
+.k14 {animation: k14 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k15 {0.000% {opacity:0} 15.143% {opacity:0} 17.286% {opacity:1} 100.000% {opacity:1}}
+.k15 {animation: k15 14s linear infinite both;}
+@keyframes k16 {0.000% {transform:scaleX(0)} 9.571% {transform:scaleX(0)} 17.429% {transform:scaleX(1)} 94.286% {transform:scaleX(1)} 94.643% {transform:scaleX(0)} 100.000% {transform:scaleX(0)}}
+.k16 {animation: k16 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k17 {0.000% {opacity:0} 16.000% {opacity:0} 18.143% {opacity:1} 100.000% {opacity:1}}
+.k17 {animation: k17 14s linear infinite both;}
+@keyframes k18 {0.000% {opacity:0;transform:translateY(6px)} 14.286% {opacity:0;transform:translateY(6px)} 16.786% {opacity:1;transform:translateY(0)} 90.000% {opacity:1;transform:translateY(0)} 94.286% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k18 {animation: k18 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k19 {0.000% {opacity:0;transform:translateY(6px)} 15.357% {opacity:0;transform:translateY(6px)} 17.857% {opacity:1;transform:translateY(0)} 90.000% {opacity:1;transform:translateY(0)} 94.286% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k19 {animation: k19 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k20 {0.000% {opacity:0;transform:translateY(6px)} 16.429% {opacity:0;transform:translateY(6px)} 18.929% {opacity:1;transform:translateY(0)} 90.000% {opacity:1;transform:translateY(0)} 94.286% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k20 {animation: k20 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k21 {0.000% {opacity:0;transform:translateY(6px)} 17.500% {opacity:0;transform:translateY(6px)} 20.000% {opacity:1;transform:translateY(0)} 90.000% {opacity:1;transform:translateY(0)} 94.286% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k21 {animation: k21 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k22 {0.000% {opacity:0;transform:translateY(6px)} 18.571% {opacity:0;transform:translateY(6px)} 21.071% {opacity:1;transform:translateY(0)} 90.000% {opacity:1;transform:translateY(0)} 94.286% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k22 {animation: k22 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k23 {0.000% {opacity:0;transform:translateY(6px)} 19.643% {opacity:0;transform:translateY(6px)} 22.143% {opacity:1;transform:translateY(0)} 90.000% {opacity:1;transform:translateY(0)} 94.286% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k23 {animation: k23 14s cubic-bezier(.2,.7,.2,1) infinite both;}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; }
+  .rm-show { opacity: 1 !important; }
+  .rm-hide { opacity: 0 !important; }
+}
+</style>
+<defs>
+<filter id="glow" x="-20%" y="-30%" width="140%" height="160%">
+<feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b"/>
+<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+</defs>
+<rect x="0.5" y="0.5" width="959" height="639" rx="16" fill="#161b22" stroke="#30363d"/>
+
+<text x="40" y="48" class="t1">Evaluation results</text>
+<text x="40" y="74" class="t2">Last full run, 22 July 2026: 18 questions with expert answers, scored 0–100.</text>
+
+<line x1="846" y1="34" x2="846" y2="52" stroke="#f0f6fc" stroke-width="2"/><text x="856" y="48" class="ax" style="font-size:13px">pass mark</text>
+<line x1="230.0" y1="136" x2="230.0" y2="432" stroke="#30363d" stroke-width="1"/>
+<text x="230.0" y="452" class="ax" text-anchor="middle">0</text>
+<line x1="380.0" y1="136" x2="380.0" y2="432" stroke="#30363d" stroke-width="1"/>
+<text x="380.0" y="452" class="ax" text-anchor="middle">25</text>
+<line x1="530.0" y1="136" x2="530.0" y2="432" stroke="#30363d" stroke-width="1"/>
+<text x="530.0" y="452" class="ax" text-anchor="middle">50</text>
+<line x1="680.0" y1="136" x2="680.0" y2="432" stroke="#30363d" stroke-width="1"/>
+<text x="680.0" y="452" class="ax" text-anchor="middle">75</text>
+<line x1="830.0" y1="136" x2="830.0" y2="432" stroke="#30363d" stroke-width="1"/>
+<text x="830.0" y="452" class="ax" text-anchor="middle">100</text>
+<g class="k1">
+<text x="40" y="128" class="grp">Retrieval</text>
+<text x="214" y="161" class="lab" text-anchor="end" data-fit="40,222">Recall@6</text>
+<path d="M230,147.0 h596 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 h-596 z" fill="#3987e5" class="tb k2" style="transform-origin: 0 50%"/>
+<line x1="710.0" y1="143" x2="710.0" y2="169" stroke="#f0f6fc" stroke-width="2"/>
+<text x="840" y="161" class="val k3" data-fit="230,950">100</text>
+<text x="214" y="193" class="lab" text-anchor="end" data-fit="40,222">MRR</text>
+<path d="M230,179.0 h524 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 h-524 z" fill="#3987e5" class="tb k4" style="transform-origin: 0 50%"/>
+<line x1="650.0" y1="175" x2="650.0" y2="201" stroke="#f0f6fc" stroke-width="2"/>
+<text x="768" y="193" class="val k5" data-fit="230,950">88.0</text>
+<text x="214" y="225" class="lab" text-anchor="end" data-fit="40,222">NDCG@6</text>
+<path d="M230,211.0 h524.6 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 h-524.6 z" fill="#3987e5" class="tb k6" style="transform-origin: 0 50%"/>
+<line x1="680.0" y1="207" x2="680.0" y2="233" stroke="#f0f6fc" stroke-width="2"/>
+<text x="768.6" y="225" class="val k7" data-fit="230,950">88.1</text>
+<text x="40" y="262" class="grp">Generation, judged by GPT-4o mini</text>
+<text x="214" y="295" class="lab" text-anchor="end" data-fit="40,222">Faithfulness</text>
+<path d="M230,281.0 h592.4 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 h-592.4 z" fill="#3987e5" class="tb k8" style="transform-origin: 0 50%"/>
+<line x1="740.0" y1="277" x2="740.0" y2="303" stroke="#f0f6fc" stroke-width="2"/>
+<text x="836.4" y="295" class="val k9" data-fit="230,950">99.4</text>
+<text x="214" y="327" class="lab" text-anchor="end" data-fit="40,222">Correctness</text>
+<path d="M230,313.0 h589.4 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 h-589.4 z" fill="#3987e5" class="tb k10" style="transform-origin: 0 50%"/>
+<line x1="740.0" y1="309" x2="740.0" y2="335" stroke="#f0f6fc" stroke-width="2"/>
+<text x="833.4" y="327" class="val k11" data-fit="230,950">98.9</text>
+<text x="214" y="359" class="lab" text-anchor="end" data-fit="40,222">Relevance</text>
+<path d="M230,345.0 h596 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 h-596 z" fill="#3987e5" class="tb k12" style="transform-origin: 0 50%"/>
+<line x1="740.0" y1="341" x2="740.0" y2="367" stroke="#f0f6fc" stroke-width="2"/>
+<text x="840" y="359" class="val k13" data-fit="230,950">100</text>
+<text x="214" y="391" class="lab" text-anchor="end" data-fit="40,222">Coherence</text>
+<path d="M230,377.0 h546.2 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 h-546.2 z" fill="#3987e5" class="tb k14" style="transform-origin: 0 50%"/>
+<line x1="710.0" y1="373" x2="710.0" y2="399" stroke="#f0f6fc" stroke-width="2"/>
+<text x="790.2" y="391" class="val k15" data-fit="230,950">91.7</text>
+<text x="214" y="423" class="lab" text-anchor="end" data-fit="40,222">Conciseness</text>
+<path d="M230,409.0 h506 a4,4 0 0 1 4,4 v10 a4,4 0 0 1 -4,4 h-506 z" fill="#3987e5" class="tb k16" style="transform-origin: 0 50%"/>
+<line x1="680.0" y1="405" x2="680.0" y2="431" stroke="#f0f6fc" stroke-width="2"/>
+<text x="750" y="423" class="val k17" data-fit="230,950">85.0</text>
+</g>
+<text x="40" y="494" class="grp">Golden-rule gates: one failure fails the whole run</text>
+<g class="k18"><rect x="40" y="508" width="284" height="34" rx="10" fill="#1c2330" stroke="#30363d"/><circle cx="60" cy="525" r="9" fill="#0ca30c"/><path d="M56,525.5 l3,3 l5.5,-6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="78" y="530" style="font-size:14.5px" fill="#f0f6fc" data-fit="40,270">Answered</text><text x="310" y="530" style="font-size:14px" font-weight="600" fill="#c9d1d9" text-anchor="end">100%</text></g>
+<g class="k19"><rect x="338" y="508" width="284" height="34" rx="10" fill="#1c2330" stroke="#30363d"/><circle cx="358" cy="525" r="9" fill="#0ca30c"/><path d="M354,525.5 l3,3 l5.5,-6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="376" y="530" style="font-size:14.5px" fill="#f0f6fc" data-fit="338,568">Citation validity</text><text x="608" y="530" style="font-size:14px" font-weight="600" fill="#c9d1d9" text-anchor="end">100%</text></g>
+<g class="k20"><rect x="636" y="508" width="284" height="34" rx="10" fill="#1c2330" stroke="#30363d"/><circle cx="656" cy="525" r="9" fill="#0ca30c"/><path d="M652,525.5 l3,3 l5.5,-6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="674" y="530" style="font-size:14.5px" fill="#f0f6fc" data-fit="636,866">Date honesty</text><text x="906" y="530" style="font-size:14px" font-weight="600" fill="#c9d1d9" text-anchor="end">100%</text></g>
+<g class="k21"><rect x="40" y="552" width="284" height="34" rx="10" fill="#1c2330" stroke="#30363d"/><circle cx="60" cy="569" r="9" fill="#0ca30c"/><path d="M56,569.5 l3,3 l5.5,-6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="78" y="574" style="font-size:14.5px" fill="#f0f6fc" data-fit="40,270">Off-topic refused</text><text x="310" y="574" style="font-size:14px" font-weight="600" fill="#c9d1d9" text-anchor="end">100%</text></g>
+<g class="k22"><rect x="338" y="552" width="284" height="34" rx="10" fill="#1c2330" stroke="#30363d"/><circle cx="358" cy="569" r="9" fill="#0ca30c"/><path d="M354,569.5 l3,3 l5.5,-6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="376" y="574" style="font-size:14.5px" fill="#f0f6fc" data-fit="338,568">No false assertion</text><text x="608" y="574" style="font-size:14px" font-weight="600" fill="#c9d1d9" text-anchor="end">100%</text></g>
+<g class="k23"><rect x="636" y="552" width="284" height="34" rx="10" fill="#1c2330" stroke="#30363d"/><circle cx="656" cy="569" r="9" fill="#0ca30c"/><path d="M652,569.5 l3,3 l5.5,-6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="674" y="574" style="font-size:14.5px" fill="#f0f6fc" data-fit="636,866">No contradiction</text><text x="906" y="574" style="font-size:14px" font-weight="600" fill="#c9d1d9" text-anchor="end">100%</text></g>
+<text x="40" y="618" style="font-size:13px" fill="#8b949e" data-fit="40,920">Also reported, not graded: 3 of 18 drafts passed cite_check without needing a person. Every draft gets human review anyway.</text>
+</svg>

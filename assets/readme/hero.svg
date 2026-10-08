@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 392" width="960" height="392" role="img" aria-labelledby="t d">
+<title id="t">Content Generator via RAG</title>
+<desc id="d">Animated banner. An example sentence is typed out: 'From 13 May 2027, a Data Fiduciary must inform the Board and each affected Data Principal of a personal data breach.' A citation tag appears beside it: DPDP Act 2023, s.8(6). Two checks follow: the citation matches a retrieved provision (Act, page 7), and the duty is dated honestly because it applies from 13 May 2027. Three labels close it: grounded in the official text, checked by code, approved by a person.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+.t1 { font-size: 22px; font-weight: 600; fill: #f0f6fc; }
+.t2 { font-size: 15px; fill: #8b949e; }
+.bt { font-size: 17px; font-weight: 600; fill: #f0f6fc; }
+.bl { font-size: 13px; fill: #8b949e; }
+.num { font-size: 13px; font-weight: 700; fill: #f0f6fc; }
+.cap { font-size: 15.5px; fill: #c9d1d9; }
+.tb { transform-box: fill-box; }
+@keyframes flow { to { stroke-dashoffset: -20; } }
+.hero { font-size: 40px; font-weight: 700; fill: #f0f6fc; letter-spacing: -0.5px; }
+.sub { font-size: 18px; fill: #c9d1d9; }
+.eyebrow { font-size: 12.5px; font-weight: 600; fill: #8b949e; letter-spacing: 1.6px; }
+.sample { font-size: 16.5px; fill: #f0f6fc; }
+.small { font-size: 12px; fill: #8b949e; }
+.ok { font-size: 14px; fill: #c9d1d9; }
+.pill { font-size: 13.5px; fill: #f0f6fc; }
+@keyframes k1 {0.000% {opacity:1;transform:scaleX(1)} 4.167% {opacity:1;transform:scaleX(1)} 21.667% {opacity:1;transform:scaleX(0)} 90.000% {opacity:1;transform:scaleX(0)} 95.000% {opacity:1;transform:scaleX(1)} 100.000% {opacity:1;transform:scaleX(1)}}
+.k1 {animation: k1 12s linear infinite both;}
+@keyframes k2 {0.000% {opacity:1;transform:scaleX(1)} 21.667% {opacity:1;transform:scaleX(1)} 30.000% {opacity:1;transform:scaleX(0)} 90.000% {opacity:1;transform:scaleX(0)} 95.000% {opacity:1;transform:scaleX(1)} 100.000% {opacity:1;transform:scaleX(1)}}
+.k2 {animation: k2 12s linear infinite both;}
+@keyframes k3 {0.000% {opacity:0;transform:translateX(0)} 3.750% {opacity:0;transform:translateX(0)} 4.167% {opacity:1;transform:translateX(0)} 21.667% {opacity:1;transform:translateX(760px)} 22.083% {opacity:0;transform:translateX(760px)} 100.000% {opacity:0;transform:translateX(760px)}}
+.k3 {animation: k3 12s linear infinite both;}
+@keyframes k4 {0.000% {opacity:0;transform:translateX(0)} 21.250% {opacity:0;transform:translateX(0)} 21.667% {opacity:1;transform:translateX(0)} 30.000% {opacity:1;transform:translateX(430px)} 30.417% {opacity:0;transform:translateX(430px)} 100.000% {opacity:0;transform:translateX(430px)}}
+.k4 {animation: k4 12s linear infinite both;}
+@keyframes k5 {0.000% {opacity:0;transform:translateY(6px)} 32.500% {opacity:0;transform:translateY(6px)} 35.417% {opacity:1;transform:translateY(0)} 90.000% {opacity:1;transform:translateY(0)} 94.167% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k5 {animation: k5 12s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k6 {0.000% {opacity:0;transform:translateY(6px)} 38.333% {opacity:0;transform:translateY(6px)} 41.250% {opacity:1;transform:translateY(0)} 90.000% {opacity:1;transform:translateY(0)} 94.167% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k6 {animation: k6 12s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k7 {0.000% {opacity:0;transform:translateY(6px)} 43.333% {opacity:0;transform:translateY(6px)} 46.250% {opacity:1;transform:translateY(0)} 90.000% {opacity:1;transform:translateY(0)} 94.167% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k7 {animation: k7 12s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k8 {0.000% {opacity:0;transform:translateY(6px)} 50.000% {opacity:0;transform:translateY(6px)} 52.917% {opacity:1;transform:translateY(0)} 90.000% {opacity:1;transform:translateY(0)} 94.167% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k8 {animation: k8 12s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k9 {0.000% {opacity:0;transform:translateY(6px)} 52.917% {opacity:0;transform:translateY(6px)} 55.833% {opacity:1;transform:translateY(0)} 90.000% {opacity:1;transform:translateY(0)} 94.167% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k9 {animation: k9 12s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k10 {0.000% {opacity:0;transform:translateY(6px)} 55.833% {opacity:0;transform:translateY(6px)} 58.750% {opacity:1;transform:translateY(0)} 90.000% {opacity:1;transform:translateY(0)} 94.167% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k10 {animation: k10 12s cubic-bezier(.2,.7,.2,1) infinite both;}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; }
+  .rm-show { opacity: 1 !important; }
+  .rm-hide { opacity: 0 !important; }
+}
+</style>
+<defs>
+<filter id="glow" x="-20%" y="-30%" width="140%" height="160%">
+<feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b"/>
+<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+</defs>
+<rect x="0.5" y="0.5" width="959" height="391" rx="16" fill="#161b22" stroke="#30363d"/>
+
+<rect x="48" y="38" width="36" height="4" rx="2" fill="#3987e5"/>
+<text x="48" y="66" class="eyebrow">CITATION-GROUNDED CONTENT GENERATION</text>
+<text x="48" y="110" class="hero" data-fit="40,920">Content Generator via RAG</text>
+<text x="48" y="142" class="sub" data-fit="40,920">Marketing content grounded in India’s DPDP Act 2023 and DPDP Rules 2025</text>
+<rect x="48" y="164" width="864" height="96" rx="12" fill="#0d1117" stroke="#30363d"/>
+<text x="68" y="188" class="small">EXAMPLE OF A CITED CLAIM</text>
+<text x="68" y="217" class="sample" data-fit="48,828">From 13 May 2027, a Data Fiduciary must inform the Board and each affected</text>
+<text x="68" y="244" class="sample" data-fit="48,498">Data Principal of a personal data breach.</text>
+<rect x="64" y="200" width="760" height="24" fill="#0d1117" class="tb k1" style="transform-origin: 100% 50%" opacity="0"/>
+<rect x="64" y="227" width="430" height="24" fill="#0d1117" class="tb k2" style="transform-origin: 100% 50%" opacity="0"/>
+<rect x="66" y="201" width="2" height="21" fill="#3987e5" class="k3" opacity="0"/>
+<rect x="66" y="228" width="2" height="21" fill="#3987e5" class="k4" opacity="0"/>
+<g class="k5"><rect x="672" y="226" width="222" height="26" rx="13" fill="#3987e5" fill-opacity="0.18" stroke="#3987e5"/><text x="783" y="244" class="mono" style="font-size:14px" fill="#f0f6fc" text-anchor="middle" data-fit="672,894">DPDP Act 2023, s.8(6)</text></g>
+<g class="k6"><circle cx="57" cy="285" r="9" fill="#0ca30c"/><path d="M53,285.5 l3,3 l5.5,-6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="74" y="290" class="ok" data-fit="48,912">Citation matches a provision the system retrieved (DPDP_Act_2023.pdf, page 7)</text></g>
+<g class="k7"><circle cx="57" cy="311" r="9" fill="#0ca30c"/><path d="M53,311.5 l3,3 l5.5,-6" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><text x="74" y="316" class="ok" data-fit="48,912">Dated honestly: this duty applies only from 13 May 2027</text></g>
+<g class="k8"><rect x="48" y="336" width="248" height="32" rx="16" fill="#1c2330" stroke="#30363d"/><circle cx="66" cy="352" r="5" fill="#3987e5"/><text x="80" y="357" class="pill" data-fit="48,296">Grounded in the official text</text></g>
+<g class="k9"><rect x="308" y="336" width="160" height="32" rx="16" fill="#1c2330" stroke="#30363d"/><circle cx="326" cy="352" r="5" fill="#199e70"/><text x="340" y="357" class="pill" data-fit="308,468">Checked by code</text></g>
+<g class="k10"><rect x="480" y="336" width="196" height="32" rx="16" fill="#1c2330" stroke="#30363d"/><circle cx="498" cy="352" r="5" fill="#0ca30c"/><text x="512" y="357" class="pill" data-fit="480,676">Approved by a person</text></g>
+</svg>

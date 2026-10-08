@@ -1,0 +1,351 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 380" width="960" height="380" role="img" aria-labelledby="t d">
+<title id="t">How the law gets in</title>
+<desc id="d">Animated diagram of the one-time build. Two official PDFs, the DPDP Act 2023 (44 sections, 9 chapters) and the DPDP Rules 2025 (23 rules, 7 schedules), go into a rule-based chunker that splits them at every Section, Rule and Schedule. The result is 81 chunks: 49 from the Act and 32 from the Rules. Each chunk is embedded by meaning with OpenAI and by exact terms with BM25, then stored in Qdrant Cloud.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+.t1 { font-size: 22px; font-weight: 600; fill: #f0f6fc; }
+.t2 { font-size: 15px; fill: #8b949e; }
+.bt { font-size: 17px; font-weight: 600; fill: #f0f6fc; }
+.bl { font-size: 13px; fill: #8b949e; }
+.num { font-size: 13px; font-weight: 700; fill: #f0f6fc; }
+.cap { font-size: 15.5px; fill: #c9d1d9; }
+.tb { transform-box: fill-box; }
+@keyframes flow { to { stroke-dashoffset: -20; } }
+
+@keyframes k1 {0.000% {opacity:0} 2.857% {opacity:0} 4.643% {opacity:1} 15.714% {opacity:1} 17.857% {opacity:0.45} 95.000% {opacity:0.45} 99.286% {opacity:0} 100.000% {opacity:0}}
+.k1 {animation: k1 14s linear infinite both;}
+@keyframes k2 {0.000% {opacity:0} 15.714% {opacity:0} 17.500% {opacity:1} 30.000% {opacity:1} 32.143% {opacity:0.45} 95.000% {opacity:0.45} 99.286% {opacity:0} 100.000% {opacity:0}}
+.k2 {animation: k2 14s linear infinite both;}
+@keyframes k3 {0.000% {opacity:0;transform:translateY(0)} 15.714% {opacity:0;transform:translateY(0)} 16.429% {opacity:1;transform:translateY(0)} 22.143% {opacity:1;transform:translateY(118px)} 22.857% {opacity:1;transform:translateY(0)} 28.571% {opacity:1;transform:translateY(118px)} 29.286% {opacity:0;transform:translateY(118px)} 100.000% {opacity:0;transform:translateY(118px)}}
+.k3 {animation: k3 14s linear infinite both;}
+@keyframes k4 {0.000% {opacity:0.12} 30.714% {opacity:0.12} 31.571% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k4 {animation: k4 14s linear infinite both;}
+@keyframes k5 {0.000% {opacity:0.12} 30.979% {opacity:0.12} 31.836% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k5 {animation: k5 14s linear infinite both;}
+@keyframes k6 {0.000% {opacity:0.12} 31.243% {opacity:0.12} 32.101% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k6 {animation: k6 14s linear infinite both;}
+@keyframes k7 {0.000% {opacity:0.12} 31.508% {opacity:0.12} 32.365% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k7 {animation: k7 14s linear infinite both;}
+@keyframes k8 {0.000% {opacity:0.12} 31.772% {opacity:0.12} 32.630% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k8 {animation: k8 14s linear infinite both;}
+@keyframes k9 {0.000% {opacity:0.12} 32.037% {opacity:0.12} 32.894% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k9 {animation: k9 14s linear infinite both;}
+@keyframes k10 {0.000% {opacity:0.12} 32.302% {opacity:0.12} 33.159% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k10 {animation: k10 14s linear infinite both;}
+@keyframes k11 {0.000% {opacity:0.12} 32.566% {opacity:0.12} 33.423% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k11 {animation: k11 14s linear infinite both;}
+@keyframes k12 {0.000% {opacity:0.12} 32.831% {opacity:0.12} 33.688% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k12 {animation: k12 14s linear infinite both;}
+@keyframes k13 {0.000% {opacity:0.12} 33.095% {opacity:0.12} 33.952% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k13 {animation: k13 14s linear infinite both;}
+@keyframes k14 {0.000% {opacity:0.12} 33.360% {opacity:0.12} 34.217% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k14 {animation: k14 14s linear infinite both;}
+@keyframes k15 {0.000% {opacity:0.12} 33.624% {opacity:0.12} 34.481% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k15 {animation: k15 14s linear infinite both;}
+@keyframes k16 {0.000% {opacity:0.12} 33.889% {opacity:0.12} 34.746% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k16 {animation: k16 14s linear infinite both;}
+@keyframes k17 {0.000% {opacity:0.12} 34.153% {opacity:0.12} 35.011% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k17 {animation: k17 14s linear infinite both;}
+@keyframes k18 {0.000% {opacity:0.12} 34.418% {opacity:0.12} 35.275% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k18 {animation: k18 14s linear infinite both;}
+@keyframes k19 {0.000% {opacity:0.12} 34.683% {opacity:0.12} 35.540% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k19 {animation: k19 14s linear infinite both;}
+@keyframes k20 {0.000% {opacity:0.12} 34.947% {opacity:0.12} 35.804% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k20 {animation: k20 14s linear infinite both;}
+@keyframes k21 {0.000% {opacity:0.12} 35.212% {opacity:0.12} 36.069% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k21 {animation: k21 14s linear infinite both;}
+@keyframes k22 {0.000% {opacity:0.12} 35.476% {opacity:0.12} 36.333% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k22 {animation: k22 14s linear infinite both;}
+@keyframes k23 {0.000% {opacity:0.12} 35.741% {opacity:0.12} 36.598% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k23 {animation: k23 14s linear infinite both;}
+@keyframes k24 {0.000% {opacity:0.12} 36.005% {opacity:0.12} 36.862% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k24 {animation: k24 14s linear infinite both;}
+@keyframes k25 {0.000% {opacity:0.12} 36.270% {opacity:0.12} 37.127% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k25 {animation: k25 14s linear infinite both;}
+@keyframes k26 {0.000% {opacity:0.12} 36.534% {opacity:0.12} 37.392% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k26 {animation: k26 14s linear infinite both;}
+@keyframes k27 {0.000% {opacity:0.12} 36.799% {opacity:0.12} 37.656% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k27 {animation: k27 14s linear infinite both;}
+@keyframes k28 {0.000% {opacity:0.12} 37.063% {opacity:0.12} 37.921% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k28 {animation: k28 14s linear infinite both;}
+@keyframes k29 {0.000% {opacity:0.12} 37.328% {opacity:0.12} 38.185% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k29 {animation: k29 14s linear infinite both;}
+@keyframes k30 {0.000% {opacity:0.12} 37.593% {opacity:0.12} 38.450% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k30 {animation: k30 14s linear infinite both;}
+@keyframes k31 {0.000% {opacity:0.12} 37.857% {opacity:0.12} 38.714% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k31 {animation: k31 14s linear infinite both;}
+@keyframes k32 {0.000% {opacity:0.12} 38.122% {opacity:0.12} 38.979% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k32 {animation: k32 14s linear infinite both;}
+@keyframes k33 {0.000% {opacity:0.12} 38.386% {opacity:0.12} 39.243% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k33 {animation: k33 14s linear infinite both;}
+@keyframes k34 {0.000% {opacity:0.12} 38.651% {opacity:0.12} 39.508% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k34 {animation: k34 14s linear infinite both;}
+@keyframes k35 {0.000% {opacity:0.12} 38.915% {opacity:0.12} 39.772% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k35 {animation: k35 14s linear infinite both;}
+@keyframes k36 {0.000% {opacity:0.12} 39.180% {opacity:0.12} 40.037% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k36 {animation: k36 14s linear infinite both;}
+@keyframes k37 {0.000% {opacity:0.12} 39.444% {opacity:0.12} 40.302% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k37 {animation: k37 14s linear infinite both;}
+@keyframes k38 {0.000% {opacity:0.12} 39.709% {opacity:0.12} 40.566% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k38 {animation: k38 14s linear infinite both;}
+@keyframes k39 {0.000% {opacity:0.12} 39.974% {opacity:0.12} 40.831% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k39 {animation: k39 14s linear infinite both;}
+@keyframes k40 {0.000% {opacity:0.12} 40.238% {opacity:0.12} 41.095% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k40 {animation: k40 14s linear infinite both;}
+@keyframes k41 {0.000% {opacity:0.12} 40.503% {opacity:0.12} 41.360% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k41 {animation: k41 14s linear infinite both;}
+@keyframes k42 {0.000% {opacity:0.12} 40.767% {opacity:0.12} 41.624% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k42 {animation: k42 14s linear infinite both;}
+@keyframes k43 {0.000% {opacity:0.12} 41.032% {opacity:0.12} 41.889% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k43 {animation: k43 14s linear infinite both;}
+@keyframes k44 {0.000% {opacity:0.12} 41.296% {opacity:0.12} 42.153% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k44 {animation: k44 14s linear infinite both;}
+@keyframes k45 {0.000% {opacity:0.12} 41.561% {opacity:0.12} 42.418% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k45 {animation: k45 14s linear infinite both;}
+@keyframes k46 {0.000% {opacity:0.12} 41.825% {opacity:0.12} 42.683% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k46 {animation: k46 14s linear infinite both;}
+@keyframes k47 {0.000% {opacity:0.12} 42.090% {opacity:0.12} 42.947% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k47 {animation: k47 14s linear infinite both;}
+@keyframes k48 {0.000% {opacity:0.12} 42.354% {opacity:0.12} 43.212% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k48 {animation: k48 14s linear infinite both;}
+@keyframes k49 {0.000% {opacity:0.12} 42.619% {opacity:0.12} 43.476% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k49 {animation: k49 14s linear infinite both;}
+@keyframes k50 {0.000% {opacity:0.12} 42.884% {opacity:0.12} 43.741% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k50 {animation: k50 14s linear infinite both;}
+@keyframes k51 {0.000% {opacity:0.12} 43.148% {opacity:0.12} 44.005% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k51 {animation: k51 14s linear infinite both;}
+@keyframes k52 {0.000% {opacity:0.12} 43.413% {opacity:0.12} 44.270% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k52 {animation: k52 14s linear infinite both;}
+@keyframes k53 {0.000% {opacity:0.12} 43.677% {opacity:0.12} 44.534% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k53 {animation: k53 14s linear infinite both;}
+@keyframes k54 {0.000% {opacity:0.12} 43.942% {opacity:0.12} 44.799% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k54 {animation: k54 14s linear infinite both;}
+@keyframes k55 {0.000% {opacity:0.12} 44.206% {opacity:0.12} 45.063% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k55 {animation: k55 14s linear infinite both;}
+@keyframes k56 {0.000% {opacity:0.12} 44.471% {opacity:0.12} 45.328% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k56 {animation: k56 14s linear infinite both;}
+@keyframes k57 {0.000% {opacity:0.12} 44.735% {opacity:0.12} 45.593% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k57 {animation: k57 14s linear infinite both;}
+@keyframes k58 {0.000% {opacity:0.12} 45.000% {opacity:0.12} 45.857% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k58 {animation: k58 14s linear infinite both;}
+@keyframes k59 {0.000% {opacity:0.12} 45.265% {opacity:0.12} 46.122% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k59 {animation: k59 14s linear infinite both;}
+@keyframes k60 {0.000% {opacity:0.12} 45.529% {opacity:0.12} 46.386% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k60 {animation: k60 14s linear infinite both;}
+@keyframes k61 {0.000% {opacity:0.12} 45.794% {opacity:0.12} 46.651% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k61 {animation: k61 14s linear infinite both;}
+@keyframes k62 {0.000% {opacity:0.12} 46.058% {opacity:0.12} 46.915% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k62 {animation: k62 14s linear infinite both;}
+@keyframes k63 {0.000% {opacity:0.12} 46.323% {opacity:0.12} 47.180% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k63 {animation: k63 14s linear infinite both;}
+@keyframes k64 {0.000% {opacity:0.12} 46.587% {opacity:0.12} 47.444% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k64 {animation: k64 14s linear infinite both;}
+@keyframes k65 {0.000% {opacity:0.12} 46.852% {opacity:0.12} 47.709% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k65 {animation: k65 14s linear infinite both;}
+@keyframes k66 {0.000% {opacity:0.12} 47.116% {opacity:0.12} 47.974% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k66 {animation: k66 14s linear infinite both;}
+@keyframes k67 {0.000% {opacity:0.12} 47.381% {opacity:0.12} 48.238% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k67 {animation: k67 14s linear infinite both;}
+@keyframes k68 {0.000% {opacity:0.12} 47.646% {opacity:0.12} 48.503% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k68 {animation: k68 14s linear infinite both;}
+@keyframes k69 {0.000% {opacity:0.12} 47.910% {opacity:0.12} 48.767% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k69 {animation: k69 14s linear infinite both;}
+@keyframes k70 {0.000% {opacity:0.12} 48.175% {opacity:0.12} 49.032% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k70 {animation: k70 14s linear infinite both;}
+@keyframes k71 {0.000% {opacity:0.12} 48.439% {opacity:0.12} 49.296% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k71 {animation: k71 14s linear infinite both;}
+@keyframes k72 {0.000% {opacity:0.12} 48.704% {opacity:0.12} 49.561% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k72 {animation: k72 14s linear infinite both;}
+@keyframes k73 {0.000% {opacity:0.12} 48.968% {opacity:0.12} 49.825% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k73 {animation: k73 14s linear infinite both;}
+@keyframes k74 {0.000% {opacity:0.12} 49.233% {opacity:0.12} 50.090% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k74 {animation: k74 14s linear infinite both;}
+@keyframes k75 {0.000% {opacity:0.12} 49.497% {opacity:0.12} 50.354% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k75 {animation: k75 14s linear infinite both;}
+@keyframes k76 {0.000% {opacity:0.12} 49.762% {opacity:0.12} 50.619% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k76 {animation: k76 14s linear infinite both;}
+@keyframes k77 {0.000% {opacity:0.12} 50.026% {opacity:0.12} 50.884% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k77 {animation: k77 14s linear infinite both;}
+@keyframes k78 {0.000% {opacity:0.12} 50.291% {opacity:0.12} 51.148% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k78 {animation: k78 14s linear infinite both;}
+@keyframes k79 {0.000% {opacity:0.12} 50.556% {opacity:0.12} 51.413% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k79 {animation: k79 14s linear infinite both;}
+@keyframes k80 {0.000% {opacity:0.12} 50.820% {opacity:0.12} 51.677% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k80 {animation: k80 14s linear infinite both;}
+@keyframes k81 {0.000% {opacity:0.12} 51.085% {opacity:0.12} 51.942% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k81 {animation: k81 14s linear infinite both;}
+@keyframes k82 {0.000% {opacity:0.12} 51.349% {opacity:0.12} 52.206% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k82 {animation: k82 14s linear infinite both;}
+@keyframes k83 {0.000% {opacity:0.12} 51.614% {opacity:0.12} 52.471% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k83 {animation: k83 14s linear infinite both;}
+@keyframes k84 {0.000% {opacity:0.12} 51.878% {opacity:0.12} 52.735% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0.12} 100.000% {opacity:0.12}}
+.k84 {animation: k84 14s linear infinite both;}
+@keyframes k85 {0.000% {opacity:0} 52.857% {opacity:0} 55.000% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0} 100.000% {opacity:0}}
+.k85 {animation: k85 14s linear infinite both;}
+@keyframes k86 {0.000% {opacity:0} 55.714% {opacity:0} 57.500% {opacity:1} 70.000% {opacity:1} 72.143% {opacity:0.45} 95.000% {opacity:0.45} 99.286% {opacity:0} 100.000% {opacity:0}}
+.k86 {animation: k86 14s linear infinite both;}
+@keyframes k87 {0.000% {transform:scaleY(0)} 70.000% {transform:scaleY(0)} 83.571% {transform:scaleY(1)} 95.000% {transform:scaleY(1)} 99.286% {transform:scaleY(0)} 100.000% {transform:scaleY(0)}}
+.k87 {animation: k87 14s cubic-bezier(.3,.6,.3,1) infinite both;}
+@keyframes k88 {0.000% {opacity:0} 2.857% {opacity:0} 4.286% {opacity:1} 15.714% {opacity:1} 17.143% {opacity:0} 100.000% {opacity:0}}
+.k88 {animation: k88 14s linear infinite both;}
+@keyframes k89 {0.000% {opacity:0} 15.714% {opacity:0} 17.143% {opacity:1} 30.000% {opacity:1} 31.429% {opacity:0} 100.000% {opacity:0}}
+.k89 {animation: k89 14s linear infinite both;}
+@keyframes k90 {0.000% {opacity:0} 30.000% {opacity:0} 31.429% {opacity:1} 55.714% {opacity:1} 57.143% {opacity:0} 100.000% {opacity:0}}
+.k90 {animation: k90 14s linear infinite both;}
+@keyframes k91 {0.000% {opacity:0} 55.714% {opacity:0} 57.143% {opacity:1} 70.000% {opacity:1} 71.429% {opacity:0} 100.000% {opacity:0}}
+.k91 {animation: k91 14s linear infinite both;}
+@keyframes k92 {0.000% {opacity:0} 70.000% {opacity:0} 71.429% {opacity:1} 85.714% {opacity:1} 87.143% {opacity:0} 100.000% {opacity:0}}
+.k92 {animation: k92 14s linear infinite both;}
+@keyframes k93 {0.000% {opacity:0} 85.714% {opacity:0} 87.143% {opacity:1} 97.857% {opacity:1} 99.286% {opacity:0} 100.000% {opacity:0}}
+.k93 {animation: k93 14s linear infinite both;}
+@keyframes k94 {0.000% {transform:scaleX(0)} 2.857% {transform:scaleX(0)} 85.714% {transform:scaleX(1)} 99.286% {transform:scaleX(1)} 99.357% {transform:scaleX(0)} 100.000% {transform:scaleX(0)}}
+.k94 {animation: k94 14s linear infinite both;}
+@keyframes k95 {0.000% {opacity:1} 95.000% {opacity:1} 99.286% {opacity:0} 99.643% {opacity:1} 100.000% {opacity:1}}
+.k95 {animation: k95 14s linear infinite both;}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; }
+  .rm-show { opacity: 1 !important; }
+  .rm-hide { opacity: 0 !important; }
+}
+</style>
+<defs>
+<filter id="glow" x="-20%" y="-30%" width="140%" height="160%">
+<feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b"/>
+<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+</defs>
+<rect x="0.5" y="0.5" width="959" height="379" rx="16" fill="#161b22" stroke="#30363d"/>
+
+<text x="40" y="48" class="t1">How the law gets in</text>
+<text x="40" y="74" class="t2">Done once at build time, and again whenever the law is amended.</text>
+
+<path d="M40,110 a10,10 0 0 1 10,-10 h148 l14,14 v42 a10,10 0 0 1 -10,10 h-152 a10,10 0 0 1 -10,-10 z" fill="#1c2330" stroke="#30363d"/>
+<path d="M198,100 v14 h14" fill="none" stroke="#30363d"/>
+<text x="54" y="128" class="bt" style="font-size:15px" data-fit="40,212">DPDP Act 2023</text>
+<text x="54" y="148" class="bl" style="font-size:12px" data-fit="40,212">44 sections · 9 chapters</text>
+<path class="k1" d="M40,110 a10,10 0 0 1 10,-10 h148 l14,14 v42 a10,10 0 0 1 -10,10 h-152 a10,10 0 0 1 -10,-10 z" fill="#3987e5" fill-opacity="0.10" stroke="#3987e5" stroke-width="2" filter="url(#glow)" opacity="0.45"/>
+<path d="M40,190 a10,10 0 0 1 10,-10 h148 l14,14 v42 a10,10 0 0 1 -10,10 h-152 a10,10 0 0 1 -10,-10 z" fill="#1c2330" stroke="#30363d"/>
+<path d="M198,180 v14 h14" fill="none" stroke="#30363d"/>
+<text x="54" y="208" class="bt" style="font-size:15px" data-fit="40,212">DPDP Rules 2025</text>
+<text x="54" y="228" class="bl" style="font-size:12px" data-fit="40,212">23 rules · 7 schedules</text>
+<path class="k1" d="M40,190 a10,10 0 0 1 10,-10 h148 l14,14 v42 a10,10 0 0 1 -10,10 h-152 a10,10 0 0 1 -10,-10 z" fill="#3987e5" fill-opacity="0.10" stroke="#3987e5" stroke-width="2" filter="url(#glow)" opacity="0.45"/>
+<path d="M212,133 h12 v80 h-12" fill="none" stroke="#484f58" stroke-width="2"/>
+<line x1="224" y1="173" x2="240" y2="173" stroke="#484f58" stroke-width="2" stroke-linecap="round"/><polygon points="248,173 239,168 239,178" fill="#484f58"/>
+<rect x="248" y="110" width="156" height="126" rx="12" fill="#1c2330" stroke="#30363d"/>
+<text x="264" y="140" class="bt" style="font-size:16px" data-fit="248,404">Chunker</text>
+<text x="264" y="164" class="bl" style="font-size:12.5px" data-fit="248,404">splits at every</text>
+<text x="264" y="181" class="bl" style="font-size:12.5px" data-fit="248,404">Section, Rule and</text>
+<text x="264" y="198" class="bl" style="font-size:12.5px" data-fit="248,404">Schedule; tables</text>
+<text x="264" y="215" class="bl" style="font-size:12.5px" data-fit="248,404">stay whole</text>
+<rect class="k2" x="248" y="110" width="156" height="126" rx="12" fill="#3987e5" fill-opacity="0.10" stroke="#3987e5" stroke-width="2" filter="url(#glow)" opacity="0.45"/>
+<rect x="254" y="114" width="144" height="2" rx="1" fill="#3987e5" class="k3" opacity="0"/>
+<line x1="404" y1="173" x2="430" y2="173" stroke="#484f58" stroke-width="2" stroke-linecap="round"/><polygon points="438,173 429,168 429,178" fill="#484f58"/>
+<rect x="446" y="104" width="12" height="12" rx="2" fill="#3987e5" class="k4"/>
+<rect x="462" y="104" width="12" height="12" rx="2" fill="#3987e5" class="k5"/>
+<rect x="478" y="104" width="12" height="12" rx="2" fill="#3987e5" class="k6"/>
+<rect x="494" y="104" width="12" height="12" rx="2" fill="#3987e5" class="k7"/>
+<rect x="510" y="104" width="12" height="12" rx="2" fill="#3987e5" class="k8"/>
+<rect x="526" y="104" width="12" height="12" rx="2" fill="#3987e5" class="k9"/>
+<rect x="542" y="104" width="12" height="12" rx="2" fill="#3987e5" class="k10"/>
+<rect x="558" y="104" width="12" height="12" rx="2" fill="#3987e5" class="k11"/>
+<rect x="574" y="104" width="12" height="12" rx="2" fill="#3987e5" class="k12"/>
+<rect x="446" y="120" width="12" height="12" rx="2" fill="#3987e5" class="k13"/>
+<rect x="462" y="120" width="12" height="12" rx="2" fill="#3987e5" class="k14"/>
+<rect x="478" y="120" width="12" height="12" rx="2" fill="#3987e5" class="k15"/>
+<rect x="494" y="120" width="12" height="12" rx="2" fill="#3987e5" class="k16"/>
+<rect x="510" y="120" width="12" height="12" rx="2" fill="#3987e5" class="k17"/>
+<rect x="526" y="120" width="12" height="12" rx="2" fill="#3987e5" class="k18"/>
+<rect x="542" y="120" width="12" height="12" rx="2" fill="#3987e5" class="k19"/>
+<rect x="558" y="120" width="12" height="12" rx="2" fill="#3987e5" class="k20"/>
+<rect x="574" y="120" width="12" height="12" rx="2" fill="#3987e5" class="k21"/>
+<rect x="446" y="136" width="12" height="12" rx="2" fill="#3987e5" class="k22"/>
+<rect x="462" y="136" width="12" height="12" rx="2" fill="#3987e5" class="k23"/>
+<rect x="478" y="136" width="12" height="12" rx="2" fill="#3987e5" class="k24"/>
+<rect x="494" y="136" width="12" height="12" rx="2" fill="#3987e5" class="k25"/>
+<rect x="510" y="136" width="12" height="12" rx="2" fill="#3987e5" class="k26"/>
+<rect x="526" y="136" width="12" height="12" rx="2" fill="#3987e5" class="k27"/>
+<rect x="542" y="136" width="12" height="12" rx="2" fill="#3987e5" class="k28"/>
+<rect x="558" y="136" width="12" height="12" rx="2" fill="#3987e5" class="k29"/>
+<rect x="574" y="136" width="12" height="12" rx="2" fill="#3987e5" class="k30"/>
+<rect x="446" y="152" width="12" height="12" rx="2" fill="#3987e5" class="k31"/>
+<rect x="462" y="152" width="12" height="12" rx="2" fill="#3987e5" class="k32"/>
+<rect x="478" y="152" width="12" height="12" rx="2" fill="#3987e5" class="k33"/>
+<rect x="494" y="152" width="12" height="12" rx="2" fill="#3987e5" class="k34"/>
+<rect x="510" y="152" width="12" height="12" rx="2" fill="#3987e5" class="k35"/>
+<rect x="526" y="152" width="12" height="12" rx="2" fill="#3987e5" class="k36"/>
+<rect x="542" y="152" width="12" height="12" rx="2" fill="#3987e5" class="k37"/>
+<rect x="558" y="152" width="12" height="12" rx="2" fill="#3987e5" class="k38"/>
+<rect x="574" y="152" width="12" height="12" rx="2" fill="#3987e5" class="k39"/>
+<rect x="446" y="168" width="12" height="12" rx="2" fill="#3987e5" class="k40"/>
+<rect x="462" y="168" width="12" height="12" rx="2" fill="#3987e5" class="k41"/>
+<rect x="478" y="168" width="12" height="12" rx="2" fill="#3987e5" class="k42"/>
+<rect x="494" y="168" width="12" height="12" rx="2" fill="#3987e5" class="k43"/>
+<rect x="510" y="168" width="12" height="12" rx="2" fill="#3987e5" class="k44"/>
+<rect x="526" y="168" width="12" height="12" rx="2" fill="#3987e5" class="k45"/>
+<rect x="542" y="168" width="12" height="12" rx="2" fill="#3987e5" class="k46"/>
+<rect x="558" y="168" width="12" height="12" rx="2" fill="#3987e5" class="k47"/>
+<rect x="574" y="168" width="12" height="12" rx="2" fill="#3987e5" class="k48"/>
+<rect x="446" y="184" width="12" height="12" rx="2" fill="#3987e5" class="k49"/>
+<rect x="462" y="184" width="12" height="12" rx="2" fill="#3987e5" class="k50"/>
+<rect x="478" y="184" width="12" height="12" rx="2" fill="#3987e5" class="k51"/>
+<rect x="494" y="184" width="12" height="12" rx="2" fill="#3987e5" class="k52"/>
+<rect x="510" y="184" width="12" height="12" rx="2" fill="#199e70" class="k53"/>
+<rect x="526" y="184" width="12" height="12" rx="2" fill="#199e70" class="k54"/>
+<rect x="542" y="184" width="12" height="12" rx="2" fill="#199e70" class="k55"/>
+<rect x="558" y="184" width="12" height="12" rx="2" fill="#199e70" class="k56"/>
+<rect x="574" y="184" width="12" height="12" rx="2" fill="#199e70" class="k57"/>
+<rect x="446" y="200" width="12" height="12" rx="2" fill="#199e70" class="k58"/>
+<rect x="462" y="200" width="12" height="12" rx="2" fill="#199e70" class="k59"/>
+<rect x="478" y="200" width="12" height="12" rx="2" fill="#199e70" class="k60"/>
+<rect x="494" y="200" width="12" height="12" rx="2" fill="#199e70" class="k61"/>
+<rect x="510" y="200" width="12" height="12" rx="2" fill="#199e70" class="k62"/>
+<rect x="526" y="200" width="12" height="12" rx="2" fill="#199e70" class="k63"/>
+<rect x="542" y="200" width="12" height="12" rx="2" fill="#199e70" class="k64"/>
+<rect x="558" y="200" width="12" height="12" rx="2" fill="#199e70" class="k65"/>
+<rect x="574" y="200" width="12" height="12" rx="2" fill="#199e70" class="k66"/>
+<rect x="446" y="216" width="12" height="12" rx="2" fill="#199e70" class="k67"/>
+<rect x="462" y="216" width="12" height="12" rx="2" fill="#199e70" class="k68"/>
+<rect x="478" y="216" width="12" height="12" rx="2" fill="#199e70" class="k69"/>
+<rect x="494" y="216" width="12" height="12" rx="2" fill="#199e70" class="k70"/>
+<rect x="510" y="216" width="12" height="12" rx="2" fill="#199e70" class="k71"/>
+<rect x="526" y="216" width="12" height="12" rx="2" fill="#199e70" class="k72"/>
+<rect x="542" y="216" width="12" height="12" rx="2" fill="#199e70" class="k73"/>
+<rect x="558" y="216" width="12" height="12" rx="2" fill="#199e70" class="k74"/>
+<rect x="574" y="216" width="12" height="12" rx="2" fill="#199e70" class="k75"/>
+<rect x="446" y="232" width="12" height="12" rx="2" fill="#199e70" class="k76"/>
+<rect x="462" y="232" width="12" height="12" rx="2" fill="#199e70" class="k77"/>
+<rect x="478" y="232" width="12" height="12" rx="2" fill="#199e70" class="k78"/>
+<rect x="494" y="232" width="12" height="12" rx="2" fill="#199e70" class="k79"/>
+<rect x="510" y="232" width="12" height="12" rx="2" fill="#199e70" class="k80"/>
+<rect x="526" y="232" width="12" height="12" rx="2" fill="#199e70" class="k81"/>
+<rect x="542" y="232" width="12" height="12" rx="2" fill="#199e70" class="k82"/>
+<rect x="558" y="232" width="12" height="12" rx="2" fill="#199e70" class="k83"/>
+<rect x="574" y="232" width="12" height="12" rx="2" fill="#199e70" class="k84"/>
+<text x="516" y="266" class="bt k85" style="font-size:15px" text-anchor="middle">81 chunks</text>
+<rect x="450" y="279" width="10" height="10" rx="2" fill="#3987e5"/><text x="466" y="288" class="bl" style="font-size:12.5px">49 Act</text><rect x="522" y="279" width="10" height="10" rx="2" fill="#199e70"/><text x="538" y="288" class="bl" style="font-size:12.5px">32 Rules</text>
+<line x1="592" y1="173" x2="622" y2="173" stroke="#484f58" stroke-width="2" stroke-linecap="round"/><polygon points="630,173 621,168 621,178" fill="#484f58"/>
+<rect x="630" y="110" width="158" height="126" rx="12" fill="#1c2330" stroke="#30363d"/>
+<text x="646" y="140" class="bt" style="font-size:16px" data-fit="630,788">Embed</text>
+<text x="646" y="164" class="bl" style="font-size:12.5px" data-fit="630,788">by meaning:</text>
+<text x="646" y="181" class="bl" style="font-size:12.5px" data-fit="630,788">OpenAI, 3,072-d</text>
+<text x="646" y="198" class="bl" style="font-size:12.5px" data-fit="630,788">by exact terms:</text>
+<text x="646" y="215" class="bl" style="font-size:12.5px" data-fit="630,788">BM25 sparse</text>
+<rect class="k86" x="630" y="110" width="158" height="126" rx="12" fill="#3987e5" fill-opacity="0.10" stroke="#3987e5" stroke-width="2" filter="url(#glow)" opacity="0.45"/>
+<line x1="788" y1="173" x2="820" y2="173" stroke="#484f58" stroke-width="2" stroke-linecap="round"/><polygon points="828,173 819,168 819,178" fill="#484f58"/>
+<clipPath id="cyl"><path d="M836,122 a45.0,11 0 0 0 90,0 v100 a45.0,11 0 0 1 -90,0 z"/></clipPath>
+<path d="M836,122 v100 a45.0,11 0 0 0 90,0 v-100" fill="#1c2330" stroke="#30363d"/>
+<g clip-path="url(#cyl)"><rect x="836" y="111" width="90" height="122" fill="#3987e5" fill-opacity="0.55" class="tb k87" style="transform-origin: 50% 100%"/></g>
+<ellipse cx="881.0" cy="122" rx="45.0" ry="11" fill="#1c2330" stroke="#30363d"/>
+<text x="881.0" y="252" class="bt" style="font-size:14px" text-anchor="middle" data-fit="820,950">Qdrant Cloud</text>
+<text x="881.0" y="270" class="bl" style="font-size:12px" text-anchor="middle" data-fit="820,950">collection “dpdp”</text>
+<rect x="40" y="304" width="880" height="46" rx="12" fill="#0d1117" stroke="#30363d"/>
+<text x="60" y="332" class="cap k88 rm-hide" opacity="0" data-fit="40,920">Input: the two official Gazette PDFs, the DPDP Act 2023 and the final DPDP Rules 2025.</text>
+<text x="60" y="332" class="cap k89 rm-hide" opacity="0" data-fit="40,920">A rule-based chunker splits them at every Section, Rule and Schedule. Tables stay whole.</text>
+<text x="60" y="332" class="cap k90 rm-hide" opacity="0" data-fit="40,920">Result: 81 chunks, each carrying its citation, PDF page number and in-force date.</text>
+<text x="60" y="332" class="cap k91 rm-hide" opacity="0" data-fit="40,920">Each chunk is indexed twice: by meaning (OpenAI embeddings) and by exact terms (BM25).</text>
+<text x="60" y="332" class="cap k92 rm-hide" opacity="0" data-fit="40,920">Everything lands in Qdrant Cloud. The live app never needs the build machine again.</text>
+<text x="60" y="332" class="cap k93 rm-hide" opacity="0" data-fit="40,920">Re-run these steps whenever the law is amended.</text>
+<text x="60" y="332" class="cap rm-show" opacity="0" data-fit="40,920">PDFs → chunker → 81 chunks → embeddings → Qdrant Cloud</text>
+<rect x="40" y="360" width="880" height="4" rx="2" fill="#30363d"/><g class="k95"><rect x="40" y="360" width="880" height="4" rx="2" fill="#3987e5" class="tb k94" style="transform-origin: 0 50%"/></g>
+</svg>

@@ -1,0 +1,153 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 568" width="960" height="568" role="img" aria-labelledby="t d">
+<title id="t">The n8n automation</title>
+<desc id="d">Animated flow of the n8n workflow in six steps. 1 Form: topic, optional link, word limit, format and whether to use current news. 2 Relevance check through the API; off-topic subjects let the user tie them to DPDP, go general, or stop. 3 Optional ideas: Claude reads trending news or the reference article. 4 The user picks an idea. 5 The API generates once per chosen format. 6 Each draft is saved as a Google Doc in Drive for human review: blog, LinkedIn long, LinkedIn short, newsletter.</desc>
+<style>
+text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif; }
+.mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+.t1 { font-size: 22px; font-weight: 600; fill: #f0f6fc; }
+.t2 { font-size: 15px; fill: #8b949e; }
+.bt { font-size: 17px; font-weight: 600; fill: #f0f6fc; }
+.bl { font-size: 13px; fill: #8b949e; }
+.num { font-size: 13px; font-weight: 700; fill: #f0f6fc; }
+.cap { font-size: 15.5px; fill: #c9d1d9; }
+.tb { transform-box: fill-box; }
+@keyframes flow { to { stroke-dashoffset: -20; } }
+
+@keyframes k1 {0.000% {opacity:0} 2.353% {opacity:0} 3.824% {opacity:1} 14.706% {opacity:1} 16.471% {opacity:0.45} 91.765% {opacity:0.45} 95.882% {opacity:0} 100.000% {opacity:0}}
+.k1 {animation: k1 17s linear infinite both;}
+@keyframes k2 {0.000% {opacity:0} 14.706% {opacity:0} 16.176% {opacity:1} 27.059% {opacity:1} 28.824% {opacity:0.45} 91.765% {opacity:0.45} 95.882% {opacity:0} 100.000% {opacity:0}}
+.k2 {animation: k2 17s linear infinite both;}
+@keyframes k3 {0.000% {opacity:0} 27.059% {opacity:0} 28.529% {opacity:1} 39.412% {opacity:1} 41.176% {opacity:0.45} 91.765% {opacity:0.45} 95.882% {opacity:0} 100.000% {opacity:0}}
+.k3 {animation: k3 17s linear infinite both;}
+@keyframes k4 {0.000% {opacity:0} 39.412% {opacity:0} 40.882% {opacity:1} 51.765% {opacity:1} 53.529% {opacity:0.45} 91.765% {opacity:0.45} 95.882% {opacity:0} 100.000% {opacity:0}}
+.k4 {animation: k4 17s linear infinite both;}
+@keyframes k5 {0.000% {opacity:0} 51.765% {opacity:0} 53.235% {opacity:1} 64.118% {opacity:1} 65.882% {opacity:0.45} 91.765% {opacity:0.45} 95.882% {opacity:0} 100.000% {opacity:0}}
+.k5 {animation: k5 17s linear infinite both;}
+@keyframes k6 {0.000% {opacity:0} 64.118% {opacity:0} 65.588% {opacity:1} 76.471% {opacity:1} 78.235% {opacity:0.45} 91.765% {opacity:0.45} 95.882% {opacity:0} 100.000% {opacity:0}}
+.k6 {animation: k6 17s linear infinite both;}
+@keyframes k7 {0.000% {opacity:0} 12.647% {opacity:0} 14.118% {opacity:1} 27.059% {opacity:1} 28.824% {opacity:0.45} 91.765% {opacity:0.45} 95.882% {opacity:0} 100.000% {opacity:0}}
+.k7 {animation: k7 17s linear infinite both, flow 1s linear infinite;}
+@keyframes k8 {0.000% {opacity:0} 25.000% {opacity:0} 26.471% {opacity:1} 39.412% {opacity:1} 41.176% {opacity:0.45} 91.765% {opacity:0.45} 95.882% {opacity:0} 100.000% {opacity:0}}
+.k8 {animation: k8 17s linear infinite both, flow 1s linear infinite;}
+@keyframes k9 {0.000% {opacity:0} 37.353% {opacity:0} 38.824% {opacity:1} 51.765% {opacity:1} 53.529% {opacity:0.45} 91.765% {opacity:0.45} 95.882% {opacity:0} 100.000% {opacity:0}}
+.k9 {animation: k9 17s linear infinite both, flow 1s linear infinite;}
+@keyframes k10 {0.000% {opacity:0} 49.706% {opacity:0} 51.176% {opacity:1} 64.118% {opacity:1} 65.882% {opacity:0.45} 91.765% {opacity:0.45} 95.882% {opacity:0} 100.000% {opacity:0}}
+.k10 {animation: k10 17s linear infinite both, flow 1s linear infinite;}
+@keyframes k11 {0.000% {opacity:0} 62.059% {opacity:0} 63.529% {opacity:1} 76.471% {opacity:1} 78.235% {opacity:0.45} 91.765% {opacity:0.45} 95.882% {opacity:0} 100.000% {opacity:0}}
+.k11 {animation: k11 17s linear infinite both, flow 1s linear infinite;}
+@keyframes k12 {0.000% {opacity:0} 17.647% {opacity:0} 19.118% {opacity:1} 26.471% {opacity:1} 27.941% {opacity:0} 100.000% {opacity:0}}
+.k12 {animation: k12 17s linear infinite both, flow 1s linear infinite;}
+@keyframes k13 {0.000% {opacity:0;transform:translateY(8px)} 65.882% {opacity:0;transform:translateY(8px)} 67.941% {opacity:1;transform:translateY(0)} 91.765% {opacity:1;transform:translateY(0)} 95.882% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k13 {animation: k13 17s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k14 {0.000% {opacity:0;transform:translateY(8px)} 67.176% {opacity:0;transform:translateY(8px)} 69.235% {opacity:1;transform:translateY(0)} 91.765% {opacity:1;transform:translateY(0)} 95.882% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k14 {animation: k14 17s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k15 {0.000% {opacity:0;transform:translateY(8px)} 68.471% {opacity:0;transform:translateY(8px)} 70.529% {opacity:1;transform:translateY(0)} 91.765% {opacity:1;transform:translateY(0)} 95.882% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k15 {animation: k15 17s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k16 {0.000% {opacity:0;transform:translateY(8px)} 69.765% {opacity:0;transform:translateY(8px)} 71.824% {opacity:1;transform:translateY(0)} 91.765% {opacity:1;transform:translateY(0)} 95.882% {opacity:0;transform:translateY(0)} 100.000% {opacity:0;transform:translateY(0)}}
+.k16 {animation: k16 17s cubic-bezier(.2,.7,.2,1) infinite both;}
+@keyframes k17 {0.000% {opacity:0} 2.353% {opacity:0} 3.529% {opacity:1} 14.706% {opacity:1} 15.882% {opacity:0} 100.000% {opacity:0}}
+.k17 {animation: k17 17s linear infinite both;}
+@keyframes k18 {0.000% {opacity:0} 14.706% {opacity:0} 15.882% {opacity:1} 27.059% {opacity:1} 28.235% {opacity:0} 100.000% {opacity:0}}
+.k18 {animation: k18 17s linear infinite both;}
+@keyframes k19 {0.000% {opacity:0} 27.059% {opacity:0} 28.235% {opacity:1} 39.412% {opacity:1} 40.588% {opacity:0} 100.000% {opacity:0}}
+.k19 {animation: k19 17s linear infinite both;}
+@keyframes k20 {0.000% {opacity:0} 39.412% {opacity:0} 40.588% {opacity:1} 51.765% {opacity:1} 52.941% {opacity:0} 100.000% {opacity:0}}
+.k20 {animation: k20 17s linear infinite both;}
+@keyframes k21 {0.000% {opacity:0} 51.765% {opacity:0} 52.941% {opacity:1} 64.118% {opacity:1} 65.294% {opacity:0} 100.000% {opacity:0}}
+.k21 {animation: k21 17s linear infinite both;}
+@keyframes k22 {0.000% {opacity:0} 64.118% {opacity:0} 65.294% {opacity:1} 76.471% {opacity:1} 77.647% {opacity:0} 100.000% {opacity:0}}
+.k22 {animation: k22 17s linear infinite both;}
+@keyframes k23 {0.000% {opacity:0} 76.471% {opacity:0} 77.647% {opacity:1} 94.706% {opacity:1} 95.882% {opacity:0} 100.000% {opacity:0}}
+.k23 {animation: k23 17s linear infinite both;}
+@keyframes k24 {0.000% {transform:scaleX(0)} 2.353% {transform:scaleX(0)} 76.471% {transform:scaleX(1)} 95.882% {transform:scaleX(1)} 95.941% {transform:scaleX(0)} 100.000% {transform:scaleX(0)}}
+.k24 {animation: k24 17s linear infinite both;}
+@keyframes k25 {0.000% {opacity:1} 91.765% {opacity:1} 95.882% {opacity:0} 96.176% {opacity:1} 100.000% {opacity:1}}
+.k25 {animation: k25 17s linear infinite both;}
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; }
+  .rm-show { opacity: 1 !important; }
+  .rm-hide { opacity: 0 !important; }
+}
+</style>
+<defs>
+<filter id="glow" x="-20%" y="-30%" width="140%" height="160%">
+<feGaussianBlur in="SourceGraphic" stdDeviation="5" result="b"/>
+<feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+</defs>
+<rect x="0.5" y="0.5" width="959" height="567" rx="16" fill="#161b22" stroke="#30363d"/>
+
+<text x="40" y="48" class="t1">The n8n automation</text>
+<text x="40" y="74" class="t2">Form in, Google Docs out. Import n8n/DPDP Content W.json to run it.</text>
+
+<line x1="290" y1="147" x2="347" y2="147" stroke="#484f58" stroke-width="2" stroke-linecap="round"/><polygon points="355,147 346,142 346,152" fill="#484f58"/>
+<line x1="605" y1="147" x2="662" y2="147" stroke="#484f58" stroke-width="2" stroke-linecap="round"/><polygon points="670,147 661,142 661,152" fill="#484f58"/>
+<line x1="795" y1="190" x2="795" y2="322" stroke="#484f58" stroke-width="2" stroke-linecap="round"/><polygon points="795,330 790,321 800,321" fill="#484f58"/>
+<line x1="670" y1="373" x2="613" y2="373" stroke="#484f58" stroke-width="2" stroke-linecap="round"/><polygon points="605,373 614,368 614,378" fill="#484f58"/>
+<line x1="355" y1="373" x2="298" y2="373" stroke="#484f58" stroke-width="2" stroke-linecap="round"/><polygon points="290,373 299,368 299,378" fill="#484f58"/>
+<line x1="480" y1="190" x2="480" y2="222" stroke="#484f58" stroke-width="2" stroke-linecap="round" stroke-dasharray="4 4"/><polygon points="480,230 475,221 485,221" fill="#484f58"/>
+<rect x="250" y="230" width="460" height="36" rx="18" fill="#1c2330" stroke="#30363d"/>
+<text x="480" y="253" style="font-size:14px" fill="#c9d1d9" text-anchor="middle" data-fit="250,710">Off-topic? The user can tie it to DPDP, go general, or stop</text>
+<rect x="40" y="104" width="250" height="86" rx="12" fill="#1c2330" stroke="#30363d"/>
+<circle cx="64" cy="130" r="12" fill="#30363d"/>
+<text x="64" y="134.5" class="num" text-anchor="middle">1</text>
+<text x="84" y="135" class="bt" data-fit="40,290">Form</text>
+<text x="58" y="160" class="bl" data-fit="40,290">topic, link, word limit,</text>
+<text x="58" y="179" class="bl" data-fit="40,290">format, use current news?</text>
+<rect x="355" y="104" width="250" height="86" rx="12" fill="#1c2330" stroke="#30363d"/>
+<circle cx="379" cy="130" r="12" fill="#30363d"/>
+<text x="379" y="134.5" class="num" text-anchor="middle">2</text>
+<text x="399" y="135" class="bt" data-fit="355,605">Relevance check</text>
+<text x="373" y="160" class="bl" data-fit="355,605">POST /relevance</text>
+<text x="373" y="179" class="bl" data-fit="355,605">is the topic in the DPDP texts?</text>
+<rect x="670" y="104" width="250" height="86" rx="12" fill="#1c2330" stroke="#30363d"/>
+<circle cx="694" cy="130" r="12" fill="#30363d"/>
+<text x="694" y="134.5" class="num" text-anchor="middle">3</text>
+<text x="714" y="135" class="bt" data-fit="670,920">Ideas (optional)</text>
+<text x="688" y="160" class="bl" data-fit="670,920">Claude reads trending news</text>
+<text x="688" y="179" class="bl" data-fit="670,920">or the reference article</text>
+<rect x="670" y="330" width="250" height="86" rx="12" fill="#1c2330" stroke="#30363d"/>
+<circle cx="694" cy="356" r="12" fill="#30363d"/>
+<text x="694" y="360.5" class="num" text-anchor="middle">4</text>
+<text x="714" y="361" class="bt" data-fit="670,920">Pick an idea</text>
+<text x="688" y="386" class="bl" data-fit="670,920">the user chooses</text>
+<text x="688" y="405" class="bl" data-fit="670,920">what to write about</text>
+<rect x="355" y="330" width="250" height="86" rx="12" fill="#1c2330" stroke="#30363d"/>
+<circle cx="379" cy="356" r="12" fill="#30363d"/>
+<text x="379" y="360.5" class="num" text-anchor="middle">5</text>
+<text x="399" y="361" class="bt" data-fit="355,605">Generate</text>
+<text x="373" y="386" class="bl" data-fit="355,605">POST /generate, once</text>
+<text x="373" y="405" class="bl" data-fit="355,605">per chosen format</text>
+<rect x="40" y="330" width="250" height="86" rx="12" fill="#1c2330" stroke="#30363d"/>
+<circle cx="64" cy="356" r="12" fill="#30363d"/>
+<text x="64" y="360.5" class="num" text-anchor="middle">6</text>
+<text x="84" y="361" class="bt" data-fit="40,290">Google Docs</text>
+<text x="58" y="386" class="bl" data-fit="40,290">one Doc per format,</text>
+<text x="58" y="405" class="bl" data-fit="40,290">saved to Drive for review</text>
+<g class="k1" opacity="0.45"><rect x="40" y="104" width="250" height="86" rx="12" fill="#3987e5" fill-opacity="0.10" stroke="#3987e5" stroke-width="2" filter="url(#glow)"/><circle cx="64" cy="130" r="12" fill="#3987e5"/><text x="64" y="134.5" class="num" text-anchor="middle" fill="#ffffff">1</text></g>
+<g class="k2" opacity="0.45"><rect x="355" y="104" width="250" height="86" rx="12" fill="#3987e5" fill-opacity="0.10" stroke="#3987e5" stroke-width="2" filter="url(#glow)"/><circle cx="379" cy="130" r="12" fill="#3987e5"/><text x="379" y="134.5" class="num" text-anchor="middle" fill="#ffffff">2</text></g>
+<g class="k3" opacity="0.45"><rect x="670" y="104" width="250" height="86" rx="12" fill="#3987e5" fill-opacity="0.10" stroke="#3987e5" stroke-width="2" filter="url(#glow)"/><circle cx="694" cy="130" r="12" fill="#3987e5"/><text x="694" y="134.5" class="num" text-anchor="middle" fill="#ffffff">3</text></g>
+<g class="k4" opacity="0.45"><rect x="670" y="330" width="250" height="86" rx="12" fill="#3987e5" fill-opacity="0.10" stroke="#3987e5" stroke-width="2" filter="url(#glow)"/><circle cx="694" cy="356" r="12" fill="#3987e5"/><text x="694" y="360.5" class="num" text-anchor="middle" fill="#ffffff">4</text></g>
+<g class="k5" opacity="0.45"><rect x="355" y="330" width="250" height="86" rx="12" fill="#3987e5" fill-opacity="0.10" stroke="#3987e5" stroke-width="2" filter="url(#glow)"/><circle cx="379" cy="356" r="12" fill="#3987e5"/><text x="379" y="360.5" class="num" text-anchor="middle" fill="#ffffff">5</text></g>
+<g class="k6" opacity="0.45"><rect x="40" y="330" width="250" height="86" rx="12" fill="#0ca30c" fill-opacity="0.10" stroke="#0ca30c" stroke-width="2" filter="url(#glow)"/><circle cx="64" cy="356" r="12" fill="#0ca30c"/><text x="64" y="360.5" class="num" text-anchor="middle" fill="#ffffff">6</text></g>
+<g class="k7" opacity="0.45"><line x1="290" y1="147" x2="347" y2="147" stroke="#3987e5" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 4"/><polygon points="355,147 346,142 346,152" fill="#3987e5"/></g>
+<g class="k8" opacity="0.45"><line x1="605" y1="147" x2="662" y2="147" stroke="#3987e5" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 4"/><polygon points="670,147 661,142 661,152" fill="#3987e5"/></g>
+<g class="k9" opacity="0.45"><line x1="795" y1="190" x2="795" y2="322" stroke="#3987e5" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 4"/><polygon points="795,330 790,321 800,321" fill="#3987e5"/></g>
+<g class="k10" opacity="0.45"><line x1="670" y1="373" x2="613" y2="373" stroke="#3987e5" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 4"/><polygon points="605,373 614,368 614,378" fill="#3987e5"/></g>
+<g class="k11" opacity="0.45"><line x1="355" y1="373" x2="298" y2="373" stroke="#3987e5" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 4"/><polygon points="290,373 299,368 299,378" fill="#3987e5"/></g>
+<g class="k12" opacity="0"><line x1="480" y1="190" x2="480" y2="222" stroke="#c98500" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 4"/><polygon points="480,230 475,221 485,221" fill="#c98500"/><rect x="250" y="230" width="460" height="36" rx="18" fill="none" stroke="#c98500" stroke-width="2"/></g>
+<g class="k13"><rect x="40" y="430" width="64" height="28" rx="8" fill="#1c2330" stroke="#0ca30c"/><path d="M52,437 h8 l4,4 v10 h-12 z" fill="none" stroke="#c9d1d9" stroke-width="1.4" stroke-linejoin="round"/><text x="72" y="449" style="font-size:13px" fill="#f0f6fc" data-fit="40,104">Blog</text></g>
+<g class="k14"><rect x="112" y="430" width="124" height="28" rx="8" fill="#1c2330" stroke="#0ca30c"/><path d="M124,437 h8 l4,4 v10 h-12 z" fill="none" stroke="#c9d1d9" stroke-width="1.4" stroke-linejoin="round"/><text x="144" y="449" style="font-size:13px" fill="#f0f6fc" data-fit="112,236">LinkedIn long</text></g>
+<g class="k15"><rect x="244" y="430" width="130" height="28" rx="8" fill="#1c2330" stroke="#0ca30c"/><path d="M256,437 h8 l4,4 v10 h-12 z" fill="none" stroke="#c9d1d9" stroke-width="1.4" stroke-linejoin="round"/><text x="276" y="449" style="font-size:13px" fill="#f0f6fc" data-fit="244,374">LinkedIn short</text></g>
+<g class="k16"><rect x="382" y="430" width="104" height="28" rx="8" fill="#1c2330" stroke="#0ca30c"/><path d="M394,437 h8 l4,4 v10 h-12 z" fill="none" stroke="#c9d1d9" stroke-width="1.4" stroke-linejoin="round"/><text x="414" y="449" style="font-size:13px" fill="#f0f6fc" data-fit="382,486">Newsletter</text></g>
+<rect x="40" y="474" width="880" height="50" rx="12" fill="#0d1117" stroke="#30363d"/>
+<text x="62" y="505" class="cap k17 rm-hide" opacity="0" data-fit="40,920">A person fills in the form: topic, optional link, word limit, format, and whether to use current news.</text>
+<text x="62" y="505" class="cap k18 rm-hide" opacity="0" data-fit="40,920">n8n asks the API whether the DPDP texts cover the topic. If not, the user decides what happens next.</text>
+<text x="62" y="505" class="cap k19 rm-hide" opacity="0" data-fit="40,920">If asked, Claude turns trending news (NewsData, NewsAPI) or the linked article into content ideas.</text>
+<text x="62" y="505" class="cap k20 rm-hide" opacity="0" data-fit="40,920">The user picks the idea to write about. Without news or a link, the topic goes straight to drafting.</text>
+<text x="62" y="505" class="cap k21 rm-hide" opacity="0" data-fit="40,920">The API drafts it once per chosen format, with the same grounding and cite_check as the app.</text>
+<text x="62" y="505" class="cap k22 rm-hide" opacity="0" data-fit="40,920">Each draft becomes a Google Doc in Drive, where a person reviews it before anything is published.</text>
+<text x="62" y="505" class="cap k23 rm-hide" opacity="0" data-fit="40,920">Each Doc shows the machine’s verdict and numbered citations, and still needs a person’s sign-off.</text>
+<text x="62" y="505" class="cap rm-show" opacity="0" data-fit="40,920">Form → relevance check → ideas → pick → generate → Google Docs</text>
+<rect x="40" y="540" width="880" height="4" rx="2" fill="#30363d"/><g class="k25"><rect x="40" y="540" width="880" height="4" rx="2" fill="#3987e5" class="tb k24" style="transform-origin: 0 50%"/></g>
+</svg>
